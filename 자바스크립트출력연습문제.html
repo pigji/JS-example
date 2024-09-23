@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 출력 연습문제</title>
+</head>
+<body>
+  <h3>
+    문제 1. 알림창에 여러분의 이름을 출력하는 소스를 작성해 보세요
+  </h3>
+  <script>
+    console.log(window)
+    alert("성지혜");
+  </script>
+  <br>
+  <!----------------------------------------------------------------------->
+<!--   
+  <h3>
+    문제 2. 콘솔창에 confirm() 함수의 예제 소스를 다시 입력한 후 [확인] 버튼을 클릭하면 어떤 값이 나오는지 확인해 보세요 </h3>
+  </h3>
+  <button onclick="comfirmDialogBox()">
+    confirm 대화 상자
+  </button>
+  <p id="text"></p>
+  <script>
+    //functionDialogBox함수를 생성
+    function comfirmDialogBox(){
+      //str이라는 변수 선언
+      var str;
+
+      if(confirm("확인이나 취소를 눌러주세요!") == true){
+        str = "당신은 확인을 눌렀습니다.";
+      }
+      else{
+        str = "당신은 취소를 눌렀습니다.";  
+      }
+      //Id=text의 str변수 값을 할당
+      document.getElementById("text").innerHTML = str;
+    }
+  </script>
+  <br> -->
+  
+  <!----------------------------------------------------------------------->
+  <h3>
+    문제 3. prompt() 함수를 활용하여 콘솔창에‘자바스크립트를 공부 중입니다’ 라고 표시해 보세요.
+  </h3>
+  <p id="text"></p>
+  <script>
+  var string = prompt("어떤 언어를 공부중입니까?", "자바스크립트를 공부 중입니다.");
+  document.getElementById("text").innerHTML = string;
+  </script>
+</body>
+</html>
