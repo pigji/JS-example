@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수</title>
+</head>
+<body>
+  <script>
+    //엄격모드 : 변수를 선언하지 않고 실행한 코드는 오류라고 알려줌.
+    "use strict";
+
+    //변수는 하나의 값을 저장하기 위한 수단이다.
+    var userId = 1;
+    var userName = "Lee";
+    console.log(userId,userName)
+
+    /*UserName변수에 "Kim"을 재할당*/
+    userName = "Kim";
+    console.log(userName)
+
+    var score;
+    console.log(score); //undefined
+    
+    score = 80; //값을 할당
+    console.log(score)
+
+    //반복문
+    for(i=0; i < 5; ++i)  //i값이 5보다 작을때까지 실행true(값이 5보다 클경우 false)
+      console.log(i)
+  </script>
+</body>
+</html>

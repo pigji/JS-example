@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상수</title>
+</head>
+<body>
+  <script>
+    var s1 = "hello world";
+    const s2 = "hello world"  //상수는 초기에 한번만 할당을 할 수 있다.
+
+    console.log(s1);
+    console.log(s2);
+
+    //s1값 재할당
+    s1 = "안녕하세요.";
+    console.log(s1);  //재할당된 값이 출력
+    
+    s2 = "안녕하세요";  //const 변수의 값은 변경할 수 없으므로 에러가 발생한다.
+  </script>
+</body>
+</html>
