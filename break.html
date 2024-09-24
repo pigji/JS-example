@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>break와 continue</title>
+</head>
+<body>
+  <script>
+    let i = 0;
+    for(;;){  //무한루프
+      ++i;  //i값 1증가
+      if(i % 2 == 1) continue;  //i를 2로 나눴을때 나머지가 1이면(i가 홀수면) 실행하지 않는다.
+      
+      console.log(i);
+      if(i >= 20) break;  //i가 20보다 크거가 같아지면 반복문 탈출
+    }
+  </script>
+</body>
+</html>

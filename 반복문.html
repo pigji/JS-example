@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문</title>
+</head>
+<body>
+  <script>
+    for(let i = 0; i < 10; ++i)
+      console.log(i);
+
+    let s = "hello world";  //띄어쓰기도 글자로 인식함.
+    for(let i = 0; i < s.length; ++i){
+      console.log(s[i]);
+    }
+
+    //연습문제1. for문을 사용하여 0부터 10미만의 정수 중에서 짝수만 출력하시오.
+    for(let i = 0; i < 10; i++){
+      if(i % 2 == 0){
+        console.log(i)
+      }
+    }
+    //연습문제2. for문을 사용하여 0부터 10미만의 정수 중에서 짝수을 문자열로 출력하시오.
+    let str = ""; //빈문자열 변수 생성
+    for(let i = 0; i < 10; i++){
+      if(i % 2 == 0){
+        str += i  //str변수에 i를 더해서 str변수에 값을 할당
+        console.log(str)  //str변수를 출력
+      }
+    }
+    //연습문제3. for문을 사용하여 0부터 10미만의 정수 중에서 홀수만을 큰 수부터 출력하시오.
+    for(let i = 9; i >= 0; i--){  //i가 9부터 0까지 반복실행
+      if(i % 2) console.log(i); //1은 true이고, 0은 false
+    }
+  </script>
+</body>
+</html>
