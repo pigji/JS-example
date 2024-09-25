@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문(while)2</title>
+</head>
+<body>
+  <script>
+    //문제3. “Java Script” 글자를 입력창(prompt)의 숫자만큼 반복 출력하는 코드 작성
+    let num = prompt("횟수 입력", 0);
+
+    let str = "Java Script";
+    let i = 1;
+    while(i <= num){  //num값만큼 반복되는 코드
+      document.write(str+"<br>");
+      i++;
+    }
+    
+    //문제4. for문을 이용하여 구구단을 출력하시오
+    let num1 = prompt("출력할 구구단을 입력하세요.")
+    for(let i = 1; i <= 9; i++ ){
+      document.write(num1 + "x" + i + "=" + (num1*i), "<br>");
+    }
+  </script>
+</body>
+</html>

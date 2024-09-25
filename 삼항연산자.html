@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삼항 연산자</title>
+</head>
+<body>
+  <script>
+    var x = 2;
+    var result;
+
+    if(x % 2){  //값이 1이면 true, 0이면 false
+      result = "홀수";
+    }
+    else{   //값이 0이면 짝수
+      result = "짝수";
+    }
+    console.log(result)
+
+    x = 3;
+    //삼항연산자 조건(위 코드를 한줄로 줄임)
+    result = x%2 ? "홀수" : "짝수"
+    console.log(result)
+  </script>
+</body>
+</html>
