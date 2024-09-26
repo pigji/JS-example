@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문(switch문) 연습문제5</title>
+</head>
+<body>
+  <script>
+    /*
+       문제5. 교보문고, 영풍문고, 종로서적 중 입력한 포털사이트로 이동하는 코드 작성
+    */
+    
+    var stie = prompt("교보문고, 영풍문고, 종로서적 중 즐겨 사용한느 포털 검색 사이트는?", "");
+    
+    var url;  //링크주소를 담을 변수
+
+    switch(stie){
+      case "교보문고": url = "https://www.kyobobook.co.kr/";
+      break;
+
+      case "영풍문고": url = "https://www.ypbooks.co.kr/";
+      break;
+
+      case "종로서적": url = "https://www.jongnobooks.com/";
+      break;
+
+      default : alert("보기 중에 없는 사이트 입니다.");
+      location.reload() //새로고침
+    }
+    console.log(url)
+
+    //해당 url 사이트로 이동
+    if(url) location.href = url;
+    
+  </script>
+</body>
+</html>

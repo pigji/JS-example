@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문(switch문) 연습문제3</title>
+</head>
+<body>
+  <script>
+    /*
+      문제3. switch를 활용하여 다음과 같은 결과를 출력하는 코드를 작성해 보세요
+        100~90점 A학점 출력
+        89~80점 B학점 출력
+        79~70점 C학점 출력
+    */
+    
+    let grades = prompt("시험 점수 입력");
+
+    //입력한 점수를 10으로 나누면 한자리 숫자는 소수점으로 나눠짐
+    let result = Number(grades)/10;
+
+    //result값을 정수로 변환( 소수점 버림 )
+    result = parseInt(result);
+
+    switch(result){
+      case 10:
+      case 9:
+        console.log("A학점")
+        break;
+      case 8:
+        console.log("B학점")
+        break;
+      case 7:
+        console.log("C학점")
+        break;
+      default: alert("70점 미만이므로 재수강")
+    }
+    
+  </script>
+</body>
+</html>

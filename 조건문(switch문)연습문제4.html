@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문(switch문) 연습문제4</title>
+</head>
+<body>
+  <script>
+    /*
+      문제4. switch를 활용하여 다음과 같은 결과를 출력하는 코드를 작성해 보세요
+        정수 2개를 입력
+        연산자를 입력
+        연산자에 맞는 계산 결과를 출력
+    */
+    
+    let operand1 = prompt("첫번째 피연산자 입력(정수만 입력)");
+    let operand2 = prompt("두번째 피연산자 입력(정수만 입력)");
+    let operator = prompt("연산자를 입력");
+
+    //문자열을 숫자로 변환해야 연산이 가능해짐(형변환)
+    operand1 = Number(operand1)
+    operand2 = Number(operand2)
+
+    switch(operator){
+      case "+" : console.log(operand1 + operand2);  //자동 형변환
+        break;
+      case "-" : console.log(operand1 - operand2);
+        break;
+      case "*" : console.log(operand1 * operand2);
+        break;
+      case "/" : console.log(operand1 / operand2);
+        break;
+      case "%" : console.log(operand1 % operand2);
+        break;
+      default: 
+        alert("+ - * / % 연산자만 사용 가능합니다.");
+        location.reload();
+    }
+  </script>
+</body>
+</html>

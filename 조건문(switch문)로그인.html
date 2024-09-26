@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문(switch문)  - 로그인</title>
+</head>
+<body>
+  <script>
+    //user의 id와 pw 지정
+    var id = "easy1004";
+    var pw = "112233";
+
+    var user_id = prompt("아이디는?", "");  //사용자한테 입력받을 user_id
+
+    //입력한 id와 저장된 아이디(user_id)와 일치하면
+    if(id === user_id){
+      var user_pw = prompt("비밀번호는?", "");  //사용자한테 입력받을 비밀번호
+      //비밀번호가 일치하면
+      if(pw == user_pw){
+        document.write(user_id + "님 반갑습니다."); //문서내에 파라미터 값을 출력
+      }
+      else{ //비밀번호가 일치하지 않는 경우
+        alert("비밀버호가 일치하지 않습니다.")
+        location.reload();  //새로고침
+      }
+    }
+    else{ //아이디가 일치하지 않는 경우
+      alert("아이디가 일치하지 않습니다.");
+      location.reload();  //새로고침 --> 처음으로 다시 돌아감
+    }
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문(switch문)  - break를 사용하지 않는 경우</title>
+</head>
+<body>
+  <script>
+    //break문을 사용하지 않는 경우
+    var month = 11;
+    var monthName;
+
+    switch(month){
+      case 1:monthName = "January";
+      case 2:monthName = "February";
+      case 3:monthName = "March";
+      case 4:monthName = "April";
+      case 5:monthName = "May";
+      case 6:monthName = "June";
+      case 7:monthName = "July";
+      case 8:monthName = "August";
+      case 8:monthName = "September";
+      case 10:monthName = "October";
+      case 11:monthName = "November";
+      case 12:monthName = "December";
+      default:monthName = "Invalid month";  //그외 입력시
+    }
+    document.write(monthName);  //Invalid month 출력
+    //break문은 코드블록을 탈출하는 역할을 한다.
+  </script>
+</body>
+</html>

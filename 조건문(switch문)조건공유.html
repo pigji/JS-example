@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문(switch문) - 조건공유</title>
+</head>
+<body>
+  <script>
+    //여러개의 조건이 같은 값을 공유하는 경우
+    var val = prompt("1 ~ 9 사이의 숫자 하나만 입력하세요.", 1)
+    var answer = "";
+
+    //재할당
+    val = Number(val) //문자를 숫자로 변경해주는 메소드
+
+    switch(val){
+      case 1:
+      case 2:
+      case 3:
+        answer = "Low";
+        break;
+      case 4:
+      case 5:
+      case 6:
+        answer = "Mid";
+        break;
+      case 7:
+      case 8:
+      case 9:
+        answer = "High";
+        break;
+      default:
+        answer = "1 ~ 9 사이의 숫자만 입력하세요."; // 그외 숫자를 입력했을 때
+        break;
+    }
+    document.write(answer)  // 값 출력
+  </script>
+</body>
+</html>

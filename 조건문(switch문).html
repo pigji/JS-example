@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문(switch문)</title>
+</head>
+<body>
+  <script>
+    var val = prompt("A, B, C 중에 알파벳 하나만 입력하세요." , "")
+    var answer = "";  //case에 따라 다른 문자를 담을 변수
+    val = val.toUpperCase();  //문자열을 대문자로 변경하는 메소드
+
+    switch(val){
+      case "A":
+        answer = "apple"; //입력 값이 a이면 answer에 apple을 할당
+        break;  //switch문을 빠져 나옴
+      case "B":
+        answer = "bird";  //입력 값이 b이면 answer에 bird 할당
+        break;
+      case "C":
+        answer = "cat";
+        break;
+      default:
+      answer = "stuff";   //입력 값이 a,b,c,가 아니면 answer에 stuff 할당
+      break;
+    }
+    document.write(answer)
+  </script>
+</body>
+</html>
