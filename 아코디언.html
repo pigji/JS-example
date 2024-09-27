@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아코디언</title>
+
+  <style>
+    .accordion{
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      transition: all .4s;
+    }
+    .active, .accordion:hover{
+      background-color: #ccc;
+    }
+    /*---------------------------------------------*/
+    /*가상요소*/
+    .accordion::after{
+      content: "\02795";  /*(+)모양 특수문자*/
+      font-size: 13px;
+      color: #777;
+      float: right;
+    }
+    .active::after{
+      content: "\2796"; /*(-)모양 특수문자*/
+    }
+    /*---------------------------------------------*/
+    .panel{
+      padding: 0 18px;
+      background-color: #fff;
+      max-height: 0;  /*높이를 0으로 만듦*/
+      overflow: hidden; /*패널 안쪽 컨텐츠를 가려놓음*/
+      transition: max-height 0.2s ease-out;
+    }
+  </style>
+</head>
+<body>
+    <button class="accordion">section 1</button>
+    <div class="panel">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Temporibus nemo culpa velit non laboriosam,
+        quisquam molestiae est ea, earum, ducimus ipsam officiis cum
+        nihil numquam qui corrupti ex nobis possimus!
+      </p>
+    </div>
+    <button class="accordion">section 2</button>
+    <div class="panel">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Temporibus nemo culpa velit non laboriosam,
+        quisquam molestiae est ea, earum, ducimus ipsam officiis cum
+        nihil numquam qui corrupti ex nobis possimus!
+      </p>
+    </div>
+    <button class="accordion">section 3</button>
+    <div class="panel">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Temporibus nemo culpa velit non laboriosam,
+        quisquam molestiae est ea, earum, ducimus ipsam officiis cum
+        nihil numquam qui corrupti ex nobis possimus!
+      </p>
+    </div>
+
+    <script>
+      const acc = document.getElementsByClassName("accordion");
+      //console.log(acc)
+
+      //모든 버튼요소에 클릭이벤트를 추가
+      for(let ac of acc){
+        ac.addEventListener("click", function(){
+          ac.classList.toggle("active");  //클릭한 버튼에 active클래스를 추가 또는 제거
+
+          const panel = ac.nextElementSibling;  //클릭한 버튼의 다음 형제요소인 panel을 선택
+          
+          if(panel.style.maxHeight){  //패널의 maxHeight값이 0이 아니면 실행
+            panel.style.maxHeight = null; //maxHeight값을 null로 설정하여 패널을 접어줍니다.
+          }
+          else{ //display가 none이면
+            console.log(panel.scrollHeight)
+            /* Element.serollHeight는 읽기전용 속성으로
+            요소 콘텐츠의 총 높이를 나타내며, 바깥으로 넘쳐서 보이지 않는 콘텐츠도 포함됩니다. */
+            
+            //패널의 scrollHeight값을 패널의 maxHeight값으로 적용하여 패널을 펄쳐줍니다.
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        })
+      }
+    </script>
+</body>
+</html>

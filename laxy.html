@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lazy evaluation</title>
+</head>
+<body>
+  <script>
+    let a = 3, b = 0;
+    //좌변이 true면 좌변을 반환, 좌변이 false면 우변을 반환
+    console.log(a || b);  //3출력
+    console.log(b || a);  //3출력
+
+    //좌변이 false면 좌변을 반환, 좌변이 true면 우변을 반환
+    console.log(a && b);  //0출력
+    console.log(b && a);  //0출력
+
+    // {} = 객체를 의미
+    let person1 = {name : "홍길동"}, person2 = null;
+    console.log(person1 && person1.name); //홍길동
+    console.log(person2 && person2.name);  //null
+
+    //형변환
+    let s = "123.456번";
+    let c = parseInt(s);  //정수만 반환(소수점+글자 버림)
+    console.log(c)  //123출력
+    
+    c = parseFloat(s);  //소주점까지 문자로 변환해서 가져옴
+    console.log(c)  //123.456c출력
+
+    c = Number(s);  
+    console.log(c)  //NaN출력
+
+    //반올림-round (floor내림처리, ceil올림처리)
+    console.log(Math.round(10/3)) //3출력
+    console.log(Math.round(10/4)) //올림처리로 3출력
+
+    //랜덤 숫자생성
+    console.log(Math.floor(Math.random()*6+1))  //1부터 7사이의 랜덤숫자 생성(내림차순으로 소수점 나오지않게 설정)
+
+    for(let i = 0; i < 20; ++i){
+      let a = Math.floor(Math.random() * 6 + 1);  //1부터 6사이의 랜덤숫자 20개 출력
+      console.log(a)
+    }
+
+    const MAX = 5, MIN = 2;   //2에서 5사이 숫자 출력
+    for (let i = 0; i < 20; ++i) {
+      let a = Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
+      console.log(a);
+    }
+
+  </script>
+</body>
+</html>

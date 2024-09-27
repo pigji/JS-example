@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인폼 만들기</title>
+
+  <!--폰트어썸 내 script 코드-->
+  <script src="https://kit.fontawesome.com/3223480a48.js" crossorigin="anonymous"></script>
+
+  <style>
+    /*초기화*/
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    a{text-decoration: none; color: inherit;}
+    body{font-family: Verdana, Geneva, Tahoma, sans-serif; color: #666; font-size: 16px;}
+
+    .login{
+      display: none;
+      position: fixed;  /*고정*/
+      top: 0; left: 0; bottom: 0; right: 0; /*뷰포트 사이즈로 늘려줌*/
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .login > .container{
+      width: 300px;
+      height: 300px;
+      background-color: white;
+      position: absolute;
+      left: 50%;
+      top: 100px;
+      transform: translateX(-50%);
+    }
+    .close{
+      height: 40px;
+      border-bottom: 1px solid #999;
+      position: relative;
+
+    }
+    .close > a{
+      font-size: 20px;
+      position: absolute;
+      right: 10px;
+      top: 8px;
+    }
+    form{padding: 30px 40px;}
+
+    /*글자와 input사이 여백설정*/
+    label{line-height: 1.5;}
+
+    /*type=text인 속성 설정*/
+    input[type=text]{
+      width: 220px;
+      height: 40px;
+      margin-bottom: 20px;
+      background-color: #f1f1f1;
+      border: 1px solid #999;
+      text-indent: 10px;  /*글자 들여쓰기*/
+    }
+    button{
+      width: 220px;
+      height: 40px;
+      color: #fff;
+      background-color: black;
+      font-size: 16px;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <div class="container">
+      <!--클로즈 버튼을 클릭하면 pClose함수가 실행-->
+      <div class="close" onclick="pClose(event)">
+        <a href="#"><i class="fas fa-times"></i></a>
+      </div>
+      <form>
+        <p>
+          <label>사용자명 또는 이메일주소</label><br>
+          <input type="text" id="user" name="user">
+        </p>
+        <p>
+          <label>암호</label>
+          <input type="text" id="pw" name="pw">
+        </p>
+        <button type="submit">로그인</button>
+      </form>
+    </div>
+  </div>
+  <section class="content">
+    <h1>로그인 입력창을 만들어 보세요.</h1>
+    <!--버튼을 클릭하면 pooput함수가 호출-->
+    <button onclick="popup()">LOGIN</button>
+  </section>
+
+  <script>
+    //로그인폼 선택
+    const login = document.querySelector(".login")
+
+    function popup(){ //popup함수 생성
+      login.style.display = "block";  //로그인의 display값을 block으로 변경하여 화면세 요피
+    }
+
+    //pClose함수 생성
+    function pClose(event){
+      event.preventDefault(); //링크를 제거
+      login.style.display = "none"; //로그인 창을 화면에서 제거
+    }
+
+    //login영역을 클릭하면 로그인이 닫히는 구현
+    window.addEventListener("click", (e) => {
+      console.log(e.target) //클릭한 요소를 읽어올 수 있음
+      if(e.target == login){  //클릭한 요소가 로그인 요소이면 실행
+        login.style.display = "none"; //로그인 창을 화면에서 제거
+      }
+    });
+
+  </script>
+</body>
+</html>
