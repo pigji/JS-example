@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열메소드 연습문제</title>
+</head>
+<body>
+  <script>
+    //문제1. cars 배열 변수에 3개의 원소가 초기값으로 설정 되어 있습니다. 아래의 기능을 수행하는데 필요한 배열 객체의 메소드를 생각해 보세요
+      //1. 스포츠카, 소형차, 중형차, 대형차
+      //2. 스포츠카, 소형차, 중형차, 대형차, 버스
+      //3. 스포츠카, 소형차, 대형차, 버스
+      //4. 대형차, 버스, 소형차, 스포츠카
+    
+    var cars = ['소형차', '중형차', '대형차'];
+    
+    //1. 추가
+    cars.unshift('스포츠카');
+    console.log("1. " + cars);
+
+    //2. 추가
+    cars.push('버스');
+    console.log("2. " + cars);
+
+    //cars[5] = '범퍼카'
+    //console.log("2. " + cars);
+
+    //3. 제거
+    cars.splice(2, 1);
+    console.log("3. " + cars);
+
+    //4. 정렬
+    cars.sort();
+    console.log("4. " + cars);
+  </script>
+</body>
+</html>

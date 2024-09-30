@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열 메서드</title>
+</head>
+<body>
+  <script>
+    let a1 = [1, 2, 3];
+    let a2 = ["a", "b", "c"];
+    //배열을 문자열로 반환
+    console.log(a1.toString())  //1, 2, 3 출력
+    console.log(a2.toString())  //a, b, c 출력
+    console.log("==============================")
+    
+    //splice 메소드 : 수정할 때 사용
+      //배열.splice(삽입할 위치, 삭제할 항목 수, 삽일할 값)
+    let a = [0, 1, 2];
+    a.splice(1, 0, "a", "b");
+    console.log(a); //[ 0, 'a', 'b', 1, 2 ] 출력
+    console.log("==============================")
+
+    //slice 메소드 : 배열의 부분을 리턴할때 사용, 원본 배열은 변경되지 않음
+    /*
+      .slice(시작위치, 끝위치)
+      리턴되는 부분 배열은, 원본 배열에서 시작_위치에서 끝_위치 사이의 항목들이다.
+      (시작위치 <= 위치 < 끝 위치)
+      끝_위치 파라미터를 생략하면, 배열의 끝까지이다.
+    */
+
+    let b = [0, 1, 2, 3];
+    console.log(b.slice(0, 1)); //[ 0 ]
+    console.log(b.slice(0, 2)); //[ 0, 1 ]
+    console.log(b.slice(1, 2)); //[ 1 ]
+    console.log(b.slice(1, 3)); //[ 1, 2 ]
+    console.log(b); //[0, 1, 2, 3]
+    console.log("==============================")
+
+    //배열의 복제
+    let c = b.slice(0)
+    console.log(c)  //[0, 1, 2, 3]
+    console.log("==============================")
+
+    //push 메소드
+      //배열 객체의 push 메소드는, 배열의 끝에 항목을 추가한다.
+      //배열의 크기는 1 증가한다.
+      //push 메소드의 리턴 값은 배열의 새 크기이다.
+    let d = [];
+    for (let i = 0; i < 5; ++i)
+      d.push(i);
+    console.log(d.toString()); //0, 1, 2, 3, 4 출력
+    
+
+    //unshift 메소드
+      //배열 객체의 unshift 메소드는, 배열의 선두에 항목을 추가한다.
+      //배열의 크기는 1 증가한다.
+      //unshift 메소드의 리턴 값은 배열의 새 크기이다.
+    let e = [];
+    for (let i = 0; i < 5; ++i)
+      e.unshift(i);
+    console.log(e.toString()); //4, 3, 2, 1 ,0 출력
+    console.log("==============================")
+
+    //sort 메소드
+      //배열의 sort 메소드는 배열의 항목들을 정렬한다.
+      //배열에 들어있는 값이 숫자이지만, 문자열인 것처럼 정렬한다.
+      //그래서 정렬한 후 2 보다 10, 11 이 앞에 위치한다
+    let f = [3, 1, 6, 2, 4, 8, 10, 5, 11, 7, 9];
+    f.sort();
+    console.log(f); //[ 1, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9 ]
+    console.log("==============================")
+
+    /*
+      비교 함수는 정렬할 두 값을 비교한다.
+      sort 메소드의 파라미터로 비교 함수를 전달하면, 이 비교 함수를 기준으로 정렬된다.
+      첫째 파라미터가 둘째 파라미터 보다 크면(정렬 순서상 뒤이면) 양수를 리턴하고,
+      배열의 메소드7작으면 (정렬 순서상 앞이면) 음수를 리턴하고, 두 값이 같으면 0을 리턴해야 한다.
+    */
+    let g = [3, 1, 6, 2, 4, 8, 10, 5, 11, 7, 9];
+    g.sort(compareNumber);
+    console.log(g); //[ 1, 2, 3, 4,  5, 6, 7, 8, 9, 10, 11 ]
+    function compareNumber(i, j) {
+      //첫번째 매개변수 - 두번째 매개변수 = 작은 값 -> 큰 값(오름차순)
+      //두번째 매개변수 - 첫번째 매개변수 = 큰 값 -> 작은 값(내림차순)
+      return i - j; //작은 값부터 큰 값 순서로 출력   //j - i : 큰 값부터 작은 값 순서로 정렬
+    }
+    
+  </script>
+</body>
+</html>

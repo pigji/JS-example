@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2차원 배열(Array)</title>
+</head>
+<body>
+  <script>
+    for(let i = 1; i <= 6; i++){  //i값이 1부터 6까지 1씩 증가하면 반복 실행
+      //console.log(i);
+      //중첩 for문
+      for(let j = 1; j <= 6; j++){  //j값이 1부터 6까지 1씩 증가하면 반복 실행
+        if(i + j === 6){  //i+j 값이 6일때
+          console.log(`[${i}, ${j}]`) //i+j 값이 6일 경우에만 i와 j값을 출력
+        }
+      }
+    }
+    console.log("====================================") //구분선
+
+    //2차원 배열
+    let a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    console.log(a[1][1]); //5출력
+    for(let i= 0; i < a.length; i++){ // i는 0,,1,2 출력
+      for(let j = 0; j < a[i].length; j++){ // j는 
+        console.log(a[i][j]);
+      }
+    }
+    console.log("====================================") //구분선
+
+    //3차원 배열
+    let b = [[[1 ,2], [3, 4]], [[5, 6], [7, 8]], [[9, 10],[11, 12]]];
+    for(let i = 0; i < b.length; i++){
+      for(let j = 0; j < b[i].length; j++){ //c의 i번째 순번의 갯수만큼 실행
+        for(let k = 0; k < b[i][j].length; k++){
+          console.log(b[i][j][k]);
+        }
+      }
+    }
+
+
+  </script>
+</body>
+</html>
