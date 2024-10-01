@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열 연습문제2</title>
+</head>
+<body>
+  <script>
+    //문제1.모음 위치 - 위 문자열에서 모음(aeiou)들의 위치(index)를 출력하는 코드를 구현하시오.
+    //메서드 : indexOF
+
+    //모음(aeiou)의 모든 index 출력
+    let text = "When I find myself in times of trouble Mother Mary comes to me Speaking words of wisdom, let it be.";
+    //변수에 모음을 담아줍니다.
+    const vowels = 'aeiou';
+    //positions객체를 만들어서 모음의 모든 index를 배열로 할당하는 방법
+    let positions = {}; //빈객체 생성
+
+    //문자열의 모든 문자를 순회합니다.
+    for(let vowel of vowels){
+      //모음(aeiou)의 순회중이 글자와 text의 순회중인 글자가 일치하면 text의 순회중인 글자의 순번은 index에 할당
+      let index = text.indexOf(vowel);
+      //순회중인 글자의 순번이 마지막 순번이 아니면 실행
+      while(index !== -1){
+        //positions 객체의 배열 값이 있으면 현재 순번을 추가
+        if(positions[vowel]){
+          positions[vowel].push(index)
+        }
+        else{
+          //positions 객체에 배열이 없으면 positions 객체에 vowel 프로터피 값으로 index를 배열로 할당
+          positions[vowel] = [index];
+        }
+
+        //다음 인덱스를 찾기 위해 현재위치 다음부터 검색
+        index = text.indexOf(vowel, index+1);
+      }
+    }
+    //index를 출력
+    console.log(positions)
+
+  </script>
+</body>
+</html>

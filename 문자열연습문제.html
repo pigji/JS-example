@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열 연습문제</title>
+</head>
+<body>
+  <script>
+    //문제1-1. 사용자로부터 전화번호를 입력 받아 끝의 4자를 ‘*ʼ로 바꾸는 프로그램 입니다
+      //다음 코드 속 A와 B를 채워 보세요.
+      //메서드 : split 사용
+    var userPhone = prompt('연락처(형식: 010-1111-2222)');
+    var part = userPhone.split("-");
+    console.log(part);1
+    console.log(part[0] + '-' + part[1] + '-' + '****');
+    console.log("--------------------------------") //구분선
+
+
+    //문제1-2. 사용자로부터 이메일을 입력 받아 이메일 형식에서 ‘@ʼ가 있는지를 체크하는 프로그램 입니다.
+      //‘@ʼ가 있으면 ‘좋습니다ʼ를 출력하고, 없으면 ‘다시 입력 하세요ʼ를 출력 합니다.
+      //메서드 : indexOf 사용
+    var userEmail = prompt('이메일(입력형식(js@naver.com))');
+        
+    // '@'가 있는지 체크
+    if(userEmail.indexOf("@")  > 0)
+      console.log('좋습니다.');
+    else    
+      console.log('다시 입력하세요.');
+    console.log("--------------------------------") //구분선
+    
+
+    //문제2-1. 모음 위치 - 위 문자열에서 모음(aeiou)들의 위치(index)를 출력하는 코드를 구현하시오.
+      //메서드 : indexOF 사용
+    let text1 = "When I find myself in times of trouble Mother Mary comes to me Speaking words of wisdom, let it be.";
+    
+    //변수에 모음을 담아줍니다.
+    const vowels = 'aeiou';
+
+    //문자열의 모든 문자를 순회합니다.
+    for(let vowel of vowels){
+      //모음(aeiou)의 순회중이 글자와 text의 순회중인 글자가 일치하면 text의 순회중인 글자의 순번은 index에 할당
+      let index = text1.indexOf(vowel);
+      //index를 출력
+      console.log(index)
+    }
+    console.log("--------------------------------") //구분선
+    
+    //내가 작성한 코드 -> 효율 떨어짐
+    // console.log(text1.indexOf("a"));
+    // console.log(text1.indexOf("e"));
+    // console.log(text1.indexOf("i"));
+    // console.log(text1.indexOf("o"));
+    // console.log(text1.indexOf("u"));
+    
+
+    //문제2-2. 공백 제거 - 위 문제의 문자열에서 공백을 모두 제거한 새 문자열을 만들고, 그 문자열을 출력하시오.
+      //메서드 : replaceAll
+    let text2 = "When I find myself in times of trouble Mother Mary comes to me Speaking words of wisdom, let it be.";
+    const trimStr = text2.replaceAll(' ', '');
+    console.log(trimStr);
+    console.log("--------------------------------") //구분선
+
+    //문제2-3. 쪼개기 - 위 문제의 문자열에서 공백을 기준으로 문자열을 쪼개서, 문자열 배열을 만들고, 그 배열을 출력하시오.
+      //메서드 : split 사용
+    let text3 = "When I find myself in times of trouble Mother Mary comes to me Speaking words of wisdom, let it be.";
+    let a = text3.split(" ");
+
+    for(let i = 0; i < a.length; i++){
+      console.log(a[i]);
+    }
+    console.log("--------------------------------") //구분선
+
+    //배열로 만들어 문자열을 출력(강사님st)
+    let wordsArray = text2.split(' ');
+    console.log(wordsArray)
+  </script>
+</body>
+</html>
