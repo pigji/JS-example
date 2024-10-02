@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연속 애니메이션 만들기</title>
+  <style>
+    div{
+      width: 320px;
+      height: 240px;
+      position: relative;
+      background: url(./img/bg.jpg);
+      margin: 0 auto;
+    }
+    div img{
+      position: absolute;
+      display: none;  /*이미지 가려놓음*/
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+
+  <script>
+    //div요소를 선택(전역변수)
+    const parent = document.querySelector("div");
+
+    //여러개의 이미지요소를 div에 추가하는 함수
+    function arrangImg(){
+      //i가 0부터 20이 될때까지 반복
+      for(let i = 0; i < 21; i++){
+        //innerHeight메소드로 div요소의 내부에 img태그를 삽입
+        parent.innerHTML += `<img src='img/seq/seq${i}.png' alt='${i}'>`
+      }
+      //img태그의 맨 처음 이미지만 보이게 설정(firstElementChild : 첫번째 요소만 선택)
+      parent.firstElementChild.style.display = "inline";
+    }
+    arrangImg();  //arrangImg함수 호출
+
+    //setInterval함수를 호출할때 id값을 저장할 변수를 생성(clearInterval시 필요)
+    let timer;
+
+    //count변수는 setInterval에서 주기적으로 함수를 호출할때 img위치가 저장됨
+    let count = 0;
+
+    //parent요소에 마우스를 올렸을때 실행되는 이벤트
+    parent.addEventListener("mouseover", () => {
+      if(timer){  //timer변수 안에 setInterval함수가 있으면 실행
+        clearInterval(timer); //clearInterval로 setInterval메소드를 종료
+      }
+      //0.05초마다 nextFrame함수를 반복 호출
+      timer = setInterval(nextFrame, 50);
+    })
+
+    //parent요소에서 마우스가 떠났을때 실행
+    parent.addEventListener("mouseout", () => {
+      if(timer){
+        clearInterval(timer);
+        //0.5초마다 prevFrame함수 호출
+        timer = setInterval(prevFrame, 50);
+      }
+    })
+
+    //모든 img요소를 선택
+    const images = document.querySelectorAll("div > img");
+    //
+    function nextFrame(){
+      //console.log("nextFrame함수 호출")  //0.5초마다 동작하는지 확인
+      
+      //이미지 순번이 count와 같은 요소를 선택하여 화면에서 제거
+      images[count].style.display = "none";
+      //count에 있는 변수값을 1씩 증가시켜 다시 count에 저장
+      count += 1;
+      //count가 20보다 커지면 실행
+      if(count > 20){
+        count = 20; //count 값을 20으로 고정
+        clearInterval(timer)  //timer변수에 할당한 setInterval메소드를 종료
+      }
+      //이미지 순번이 count와 같은 요소를 선택하여 화면에 표시
+      images[count].style.display = "inline";
+    }
+
+    //
+    function prevFrame(){
+      //현재 보이는 이미지를 제거(가려줌)
+      images[count].style.display = "none";
+      //count에 있는 변수 값을 1씩 감소시켜 count에 저장(이전 요소의 순번)
+      count -= 1;
+      //count가 0보다 작으면 0으로 고정, setInterval함수를 종료
+      if(count < 0){
+        count = 0;
+        clearInterval(timer);
+      }
+      images[count].style.display = "inline";
+    }
+
+  </script>
+</body>
+</html>

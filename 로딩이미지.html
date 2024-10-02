@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로딩 이미지</title>
+
+  <style>
+    #loading{
+      background-color: #ddd;
+      position: fixed;  /*객체를 띄워서 고정시킴*/
+      z-index: 999; /*다른 요소에 가려지지 않게 맨위로 오도록 높은 수 설정*/
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .spinner{
+      width: 200px;
+      height: 200px;
+    }
+
+    /*로딩이 완료되면 로딩요소의 클래스를 추가하여 이미지를 감춤*/
+    .loaded{
+      opacity: 0; /*투명도*/
+      visibility: hidden; /*브라우저에 보이지 않게 설정*/
+    }
+
+    /*콘텐츠 부분*/
+    .gallery{
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    img{
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!--로딩 이미지-->
+  <div id="loading">
+    <img class="spinner" src="img/loading.png" alt="">
+  </div>
+  
+  <!--콘텐츠-->
+  <div class="gallery">
+    <!--
+      //script에서 for문을 사용하여 이미지 여러개 사용
+      <div class="item"><img src="img/img1.jpg" alt=""></div>
+    -->
+  </div>
+  <script>
+    //.gallery에 12개의 이미지요소를 추가하는 구문
+    const gallery = document.querySelector(".gallery");
+    //i가 1부터 12가 될때까지 반복
+    for(let i = 1; i <= 12; i++){
+      //gallery의 자식요소 총 12개의 이미지요소를 추가
+      gallery.innerHTML += `<div class="item"><img src="img/img${i}.jpg" alt=""></div>`;
+    }
+    /*------------------------------------------------*/
+    const loading = document.querySelector("#loading");
+    //모든 리스스 불러오기가 완료되면 #loading에 loaded클래스를 추가해서 로딩 아이콘을 감춰줌
+    window.addEventListener('load', () => {
+      loading.classList.add('loaded');
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid 속성</title>
+
+  <style>
+    *{box-sizing:border-box;}
+    
+    body{margin:0;}
+    .item{
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        font-size:1.2rem;
+        font-weight: bold;
+        border:1px solid black;
+    }
+    .color1{background-color:aqua;}
+    .color2{background-color:bisque;}
+    .color3{background-color:coral;}
+    .color4{background-color:darkcyan;}
+    .color5{background-color:brown;}
+
+    .container{
+      display: grid;
+      /*몇개의 행(collumn)을 만들어 줄것인지 크기는 어떻게 설정할 것인지 정의*/
+      grid-template-columns: 100px 100px 100px;
+
+      /*몇개의 줄(row)만들어 줄것 인지 설정*/
+      /* grid-template-rows: 200px 200px 100px 100px; */
+
+      /*repeat함수 활용 : repeat(반복 횟수, 크기)*/
+      /*
+      grid-template-columns: repeat(5, 100px);
+      grid-template-rows: repeat(2, 100px); 
+      */
+
+      /* %퍼센트 단위 사용 가능 */
+      grid-template-columns: repeat(5, 20%);
+      /*fr 활용 : 배율로 칸의 갯수와 크기를 설정*/
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-columns: repeat(5, 1fr);
+
+      /*전체적으로 자동으로 사이즈 지정*/
+      grid-auto-rows: 150px;
+
+      /*최소 높이는 150px유지 콘텐츠 내용이 많은 부분은 auto로 설정*/
+      grid-auto-rows: minmax(150px, auto);
+
+      /*콘텐츠 사이 여백*/
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+
+      /*전체 적용*/
+      grid-gap: 20px;
+      padding: 10px;
+    }
+
+    .item:nth-child(2){
+      grid-column: 2/4; /*요소의 넓이를 2번째 줄에서 4번째 줄까지 늘려줌*/
+      grid-row: 1/3;
+      grid-column: 2 / span 2;  /*두번째 줄에서 2줄 크기만큼 늘림*/
+      grid-column: 2 / -1;  /*두번째 줄에서 끝까지*/
+    }
+  </style>
+</head>
+<body>
+  <!--젠코딩 : .container>.item.color{Item$}*10-->
+  <div class="container">
+    <div class="item color1">
+      Item1
+    </div>
+    <div class="item color2">Item2</div>
+    <div class="item color3">Item3</div>
+    <div class="item color4">Item4</div>
+    <div class="item color5">Item5</div>
+    <div class="item color1">Item6</div>
+    <div class="item color2">Item7</div>
+    <div class="item color3">Item8</div>
+    <div class="item color4">Item9</div>
+    <div class="item color5">Item10</div>
+  </div>
+</body>
+</html>
