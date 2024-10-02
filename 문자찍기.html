@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자찍기</title>
+</head>
+<body>
+  <script>
+    const tempString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //7의 배수인 순번에 글자를 *로 표시
+    
+    //tempString변수의 문자 갯수만큼 반복
+    for(let i= 0; i < tempString.length; i++){
+      if(i % 7 !== 0 || i === 0){  // i가 7의 배수가 아니거나 i값이 0이면 출력
+        document.write(tempString[i])
+      }
+      else{   //i가 7의 배수면 *로 표시
+        document.write("*")
+      }
+    }
+  </script>
+</body>
+</html>

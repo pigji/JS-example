@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>콜백함수</title>
+</head>
+<body>
+  <script>
+    function add(a, b) {
+      return a + b;
+    }
+    let a = add(3, 4);  //변수 a 에는 add(3, 4) 함수의 리턴값 7이 대입된다.
+    console.log(a); //7출력
+
+    let f = add;  //변수 f 에 대입되는 값은 add 함수이다.
+    console.log(typeof f); //function //변수 f 에 대입된 값은 함수이고, 그 값의 자료형은 function 이다.
+
+    let b = f(3, 4);  //변수 f의 값인 함수를 호출한다. 즉 add 함수가 호출된다. 이 함수의 리턴값 7이 변수 b에 대입된다.
+    console.log(b); //7출력
+
+    /*----------------------------------*/
+    let p = function(a, b) {
+      return a + b;
+    }
+    console.log(typeof f); //function //변수 f 에 대입된 값은 함수이고, 그 값의 자료형은 function 이다
+    
+    let c = f(3, 4);  //변수 f의 값인 함수를 호출한다. 즉 add 함수가 호출된다. 이 함수의 리턴값 7이 변수 b에 대입된다.
+    console.log(c); //7출력
+
+    /*----------------------------------*/
+    function test1(f){  //test1함수가 호출되면 매개변수 f에 add 또는 multiply함수가 전달된다.
+      let result = f(3, 4); //add 또는 multiply함수가 호출되고 리턴값이 result에 대입된다.
+      console.log(result);  //result를 출력
+    }
+
+    //더하기 연산을 하는 add함수를 생성
+    function add(a, b){
+      return a + b; //7출력
+    }
+
+    //곱하기 연산을 하는 multiply함수를 생성
+    function multiply(a, b){
+      return a * b; //12출력
+    }
+
+    test1(add); //test1함수를 호출한다. 이때 파라미터로 add함수가 전달(더하기 연산)
+
+    test1(multiply);  //test1함수를 호출, 이때 파라미터로 multiply함수를 전달(곱하기 연산)
+  </script>
+</body>
+</html>

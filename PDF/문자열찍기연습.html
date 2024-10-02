@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열찍기 연습</title>
+</head>
+<body>
+  <p id="typing"></p>
+
+  <script>
+    //typing요소에 들어갈 글자
+    let x = "Heaven helps those who help themselves.";
+    
+    //글자의 순번(index)을 담을 변수
+    let i = 0;  //초기값
+    
+    //typing요소 선택
+    const typing = document.querySelector("#typing");
+    
+
+    //typeWriter함수 생성(typing요소에 x변수의 글자를 한글자씩 순서대로 넣어주는 함수)
+    function typeWriter(){
+      //i가 x변수의 글자수 보다 작으면 실행
+      if(i < x.length){
+        //typing요소에 x변수의 글자중 index가 i번째인 글자를 더해서 출력
+        typing.textContent += x[i];
+        i++;  //i변수의 값을 1증가 시킴
+        //0.2초 뒤에 typeWriter함수를 호출
+        setTimeout(typeWriter, 200);  //재귀함수(자신이 자신의 함수를 호출함)
+      }
+      else{ //i가 x변수의 글자수와 같거나 커지면 실행
+        i = 0;  //i를 0으로 초기화
+        // 1초뒤에 recall함수를 실행
+        setTimeout(recall, 1000);
+      }
+    }
+    //recall함수 생성
+    function recall(){
+      //typing요소에 글자를 비워줍니다.
+      typing.textContent = "";
+      typeWriter(); //다시 typeWriter함수를 호출( 빈문자열로 초기화했다가 다시 호출했기 때문에 무한반복함 )
+    }
+
+    typeWriter(); //함수 호출
+
+  </script>
+</body>
+</html>

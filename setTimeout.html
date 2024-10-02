@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setTimeout함수</title>
+</head>
+<body>
+  <script>
+    //printTime함수가 호출되면 메시지를 mag매개변수로 전달받고
+    function printTime(msg){
+      //메시지와 현재날짜 정보를 출력
+      console.log(msg, new Date())
+    }
+
+    setTimeout(printTime, 1000, "1초 후");  //1000 = 1초
+    setTimeout(printTime, 2000, "2초 후");
+    setTimeout(printTime, 3000, "3초 후");
+  </script>
+</body>
+</html>
