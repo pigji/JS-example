@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자 연습문제</title>
+</head>
+<body>
+  <h1>아이디가 lastEl인 요소를 선택 하세요</h1>
+  <ul>
+    <li id="firstEl">첫 번째 아이템이에요!</li>
+    <li id="secondEl">두 번째 아이템이에요!</li>
+    <li class="items">세 번째 아이템이에요!</li>
+    <li class="items">네 번째 아이템이에요!</li>
+    <li id="lastEl">다섯 번째 아이템이에요!</li>
+  </ul>
+
+  <script>
+    //문제1 :  getElementById로 element를 선택하고 텍스트를 출력해 보세요
+    const itemes = document.getElementById("firstEl");
+    console.log(firstEl);
+    //문제2 : getElementsByClassName으로 element를 선택하고 콘솔에 출력해 보세요
+    const itemes2 = document.getElementsByClassName("itemes2");
+    console.log(itemes2);
+    //문제3 : getElementsByTagName으로 element를 선택하고 콘솔에 출력해 보세요
+    const itemes3 = document.getElementsByTagName("li");
+    console.log(itemes3);
+
+  </script>
+</body>
+</html>

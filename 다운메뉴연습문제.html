@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다운메뉴 연습문제</title>
+
+  <style>
+     /*초기화*/
+     *{margin: 0; padding: 0;}
+    ul, li{list-style: none;}
+    a{text-decoration: none; color: inherit;}
+
+    /*전체구역*/
+    nav{
+      min-width: 1200px;
+      background-color: orange;
+      color: white;
+      font-family: "Pretendard";
+    }
+    nav > .container{
+      width: 1200px;
+      margin: 0 auto;
+      padding: 0 10px;
+      box-sizing: border-box;
+      display: flex;  /*나란히 정렬*/
+      justify-content: space-between; /*각 요소 끝에 배치*/
+      align-items: center;  /*가운데정렬*/
+    }
+    nav .logo{
+      font: 20px;
+    }
+    nav .gnb{
+      display: flex;
+      margin-right: 50px;
+    }
+    nav .gnb > li{
+      position: relative; /*유령의 집화*/
+      margin-right: 60px;
+      text-indent: 10px;  /*들여쓰기*/
+    }
+    nav .gnb > li a{  /*.sub li의 a요소까지 정렬(후손선택자)*/
+      display: block;
+      padding: 10px 0;
+    }
+    .sub{
+      position: absolute;
+      background-color: #999;
+      width: 150px;
+      max-height: 0;
+      transition: max-height 0.5s;
+      overflow: hidden;
+    }
+    /*마우스이벤트 효과*/
+    .gnb a:hover{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo"><a href="#">SHAMMAH</a></div>
+      <ul class="gnb">
+        <li>
+          <a href="#">ABOUT</a>
+          <ul class="sub">
+            <li><a href="#">My Name</a></li>
+            <li><a href="#">Birth Day</a></li>
+            <li><a href="#">Education</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">NEWS</a>
+          <ul class="sub">
+            <li><a href="#">Today News</a></li>
+            <li><a href="#">Social</a></li>
+            <li><a href="#">Information</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">PORTFOLIO</a>
+          <ul class="sub">
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Printout</a></li>
+            <li><a href="#">My Photo</a></li>
+            <li><a href="#">Illustration</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">BOARD</a>
+          <ul class="sub">
+            <li><a href="#">Notice</a></li>
+            <li><a href="#">Free Board</a></li>
+            <li><a href="#">Contact Me</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">ALBUM</a>
+          <ul class="sub">
+            <li><a href="#">Our Family</a></li>
+            <li><a href="#">My Friends</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">CONTACT</a>
+          <ul class="sub">
+            <li><a href="#">Location</a></li>
+            <li><a href="#">E-mail</a></li>
+            <li><a href="#">Mobile Phone</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav> 
+
+  <!--JavaScript-->
+  <script>
+    //gbn버튼 선택
+    const gnbLi = document.querySelectorAll('.gnb > li');
+
+    //
+    for(const item of gnbLi){
+      //메뉴에 마우스를 올려놨을때
+      item.addEventListener('mouseenter', () => {
+        item.lastElementChild.style.maxHeight = item.lastElementChild.scrollHeight + "px";
+      })
+      //메뉴에서 마우스가 떠났을때
+      item.addEventListener("mouseleave", () => {
+        item.lastElementChild.style.maxHeight = "0px"
+      })
+    }
+  </script>
+</body>
+</html>

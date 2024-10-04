@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트함수 연습1</title>
+
+  <style>
+    input[name="search"]{
+    width: 250px;
+    padding: 5px;
+    border: 2px solid #aaa;
+}
+  </style>
+</head>
+<body>
+  <input type="text" name="search" onkeydown="mySearch(event)" placeholder="검색어 입력 후, 엔터를 클릭하세요.">
+  <script>
+    //이 곳에 자바스크립트 코드 작성
+      //mySearch 이벤트 생성
+    function mySearch(event){
+      //Enter를 눌렀을때 코드 실행(조건문 사용)
+      console.log(event);  //이벤트 값 출력확인
+    
+      if(event.keyCode == 13){  //Enter를 클릭했을때  //Enter keyCode 값 = 13
+        console.log(event.target)
+        alert(event.target.value);  //입력창의 입력 값을 경고창으로 출력
+      }
+    }
+  </script>
+</body>
+</html>
