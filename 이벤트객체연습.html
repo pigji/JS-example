@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트객체 연습</title>
+
+  <style>
+    #m1{ width:100px; height:100px; position:absolute; top:0; left:0 }
+    #m2{ width:100px; height:100px; position:absolute; top:0; right:0 }
+    #m3{ width:100px; height:100px; position:absolute; bottom:0; left:150px }
+    #cursor{
+      width:50px; 
+      height:50px; 
+      background:url(img/111.png) center/cover; 
+      position:absolute; 
+      top:0; left:0;
+    }
+  </style>
+</head>
+<body>
+  <div id="m1"><img src="img/1.png" /></div>
+	<div id="m2"><img src="img/2.png" /></div>
+	<div id="m3"><img src="img/3.png" /></div>
+	<div id="cursor"></div>
+
+  <script>
+    //브라우저 내에서 마우스를 움직였을때
+    addEventListener("mousemove", function(e) {
+      const x = e.clientX;  //마우스의 x축 위치값
+      const y = e.clientY;  //마우스의 y축 위치값
+      //console.log(x, y);  //위치값 확인
+      
+      //이미지 선택
+      const m1 = document.querySelector("#m1");
+      //m1의 top, left 속성 값을 마우스 위치에 x, y축 위치값으로 대입
+      //이때 x, y값을 나눠서 이동 값을 움직이는 범위를 제한시킴
+      m1.style.transform = `translate(${x/3}px, ${y/2}px)`;
+
+      //마우스를 따라다니는 이미지
+      const cursor = document.querySelector('#cursor');
+      cursor.style.transform = `translate(${x}px, ${y}px)`;
+
+      const m2 = document.querySelector("#m2");
+      m2.style.transform = `translateX(${x/5}px)`;
+
+      const m3 = document.querySelector("#m3");
+      m3.style.transform = `translateY(${y/6}px)`;
+      
+    });
+  </script>
+</body>
+</html>
