@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>appendChild</title>
+</head>
+<body>
+  <ul id="fruits">
+    <li>Apple</li>
+  </ul>
+
+  <script>
+    //ul태그 선택
+    const fruits = document.getElementById("fruits");
+    //요소 노드 생성
+    const li = document.createElement('li');  //li요소를 생성
+    //텍스트 노드 생성
+    const textNode = document.createTextNode('Banana');
+    //텍스트 노드를 li요소 노드의 자식 노드로 추가
+    li.appendChild(textNode);
+
+    //li요소 노드를 fruits요소 노드의 마지막 자식노드로 추가
+    fruits.appendChild(li);
+    //console.log(li);  //확인
+
+    /*-------------------------------------------------------*/
+    //documentFragment노드 생성
+    const fragment = document.createDocumentFragment();
+    //console.log(fragment) //확인
+    
+    //배열요소를 text매개변수로 전달하여 함수를 반복 호출
+    ['Apple', 'Banana', 'Orange'].forEach(text => {
+      //li요소를 생성
+      const li = document.createElement('li');
+      //텍스트 노드 생성
+      const textNode = document.createTextNode(text);
+      //텍스트 노드를 li요소 노드의 자식 노드로 추가
+      li.appendChild(textNode);
+      console.log(li) //확인
+
+      //li요소 노드를 fragment노드의 마지막 자식 노드로 추가
+      fragment.appendChild(li);
+      console.log(fragment);
+    })
+    //fragment노드를 fruits요소 노드의 마지막 자식 노드로 추가
+    fruits.appendChild(fragment); //Apple, Banana, Orange
+
+  </script>
+</body>
+</html>

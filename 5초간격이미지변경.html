@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5초 간격 이미지변경</title>
+
+  <style>
+    #pic {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 1px 1px 2px black;
+    }
+  </style>
+</head>
+<body>
+  <img src="img/pic1.jpg" alt="이미지" id="pic">
+  
+  <script>
+    //pic 이미지요소 선택
+    const pic = document.querySelector("#pic");
+    //src속성 값에서 뒤에서 5번째 순번의 한글자만 반환
+    let sNum = pic.getAttribute("src").substr(-5, 1);
+    //console.log(sNum);  //이미지 위치 확인
+
+    let timer = setInterval(gogo, 5000); //gogo함수를 만들어 1초에 한번씩 반복 호출
+    //gogo함수 생성
+    function gogo(){
+      //sNum이 3보다 크더나 같을때 실행
+      if(sNum >= 3){
+        sNum = 0; //0으로 초기화
+      }
+
+      sNum++; //sNum변수를 1씩 증가시킴
+      console.log(sNum);  //1초에 한번씩 증가되는지 확인
+      //pic요소에 src속성의 이미지경로를 변경하여 이미지를 변환
+      pic.setAttribute("src", `img/pic${sNum}.jpg`)
+    }
+
+    //이미지요소에 마우스를 올려놨을때 이미지 멈춤(종료)
+    pic.addEventListener("mouseenter", function(){
+      clearInterval(timer); //setInterval함수를 종료
+    })
+
+    //이미지요소에서 마우스가 떠났을때 이미지 재생(setInterval함수 다시 호출)
+    pic.addEventListener("mouseleave", function(){
+      //재할당
+      let timer = setInterval(gogo, 5000);
+    })
+  </script>
+</body>
+</html>
