@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>연습문제</title>
+<style>
+	#mylist{
+	    list-style-type: none;
+	    padding: 0;
+	}
+	#mylist > li{
+	    line-height: 2em;
+	    margin: 5px 0;
+	    border: 1px solid #ccc;
+	    cursor: pointer;
+	    background: url("bullet.png") no-repeat;
+	    text-indent: 32px;
+	}
+	.clicked{
+	    background-color: lightgreen !important;    /*!important : 최우선순위를 가지는 속성*/
+	}
+</style>
+</head>
+<body>
+  <ul id="mylist">
+      <li>1번째 목록</li>
+      <li>2번째 목록</li>
+      <li>3번째 목록</li>
+  </ul>
+
+  <script>
+  var lists = document.querySelectorAll('#mylist > li');
+
+  for(var i=0; i<lists.length; i++){
+    //목록(리스트)에 mouseover와 mouseout하면 배경색이 연한 회색(#eee)이 되고,
+    //클릭하면 lightgreen으로 바꾸는 코드를 작성해 보세요.
+
+    //hover했을때 #eee색으로 배경색 변경
+    lists[i].addEventListener("mouseover", function(){
+        this.style.backgroundColor = "#eee";
+    })
+    //hover했다가 마우스를 땠을때 원래색으로 돌아도록 설정
+    lists[i].addEventListener("mouseout", function(){
+        this.style.backgroundColor = "transparent"; //마우스를 때면 원래 색으로 돌아감
+    })
+    //클릭했을때 lightgreen으로 배경색 변경
+    lists[i].onclick = clickList;
+  }
+
+  function clickList(){
+    // if(this.className == 'clicked'){
+    //     this.className = '';
+    // }else{
+    //     this.className = 'clicked';
+    // }
+
+    //if문 사용 대신 심플 코드작성
+    this.classList.toggle("clicked");
+}
+
+</script>
+</body>
+</html>

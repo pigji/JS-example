@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tab 메뉴</title>
+  <style>
+    .on{
+      background-color:red;
+    }
+  </style>
+</head>
+<body>
+  <ul class="tab_menu">
+		<li>공지사항</li>
+		<li>알림마당</li>
+		<li>보도자료</li>
+		<li>채용정보</li>
+	</ul>
+	<div class="tab_list">
+		<ul>
+			<li>공지사항입니다.</li>
+			<li>공지사항입니다.</li>
+			<li>공지사항입니다.</li>
+			<li>공지사항입니다.</li>
+		</ul>
+		<ul>
+			<li>알림마당입니다.</li>
+			<li>알림마당입니다.</li>
+			<li>알림마당입니다.</li>
+			<li>알림마당입니다.</li>
+		</ul>
+		<ul>
+			<li>보도자료입니다.</li>
+			<li>보도자료입니다.</li>
+			<li>보도자료입니다.</li>
+			<li>보도자료입니다.</li>
+		</ul>
+		<ul>
+			<li>채용정보입니다.</li>
+			<li>채용정보입니다.</li>
+			<li>채용정보입니다.</li>
+			<li>채용정보입니다.</li>
+		</ul>
+	</div>
+
+  <script>
+    //tab버튼이 되는 li요소들을 변수에 할당
+    const tabMenuLi = document.querySelectorAll(".tab_menu li");
+    //tab 내용이 되는 ul요소들을 변수에 할당
+    const tabListUl = document.querySelectorAll(".tab_list ul");
+    //모든 li요소를 menuLi로 할당해서 클릭이벤트를 적용
+      //forEach문의 첫번째 인자로 순회중인 요소, 두번째 인자로 순회중인 요소의 index값을 받아올 수 있다
+    tabMenuLi.forEach((menuLi, idx) => menuLi.addEventListener("click", () => {
+      
+      //클릭한 li요소의 on클래스를 추가
+      menuLi.classList.add("on"); //클릭하면 style이 적용되서 빨간색 배경으로 나옴
+      //클릭한 li요소와 같은 순번의 tabListIl요소에 on클래스를 추가
+      tabListUl[idx].classList.add("on");
+    }))
+  </script>
+</body>
+</html>

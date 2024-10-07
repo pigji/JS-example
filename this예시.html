@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this예씨</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      value : 42,
+      //obj객체의 add메서드
+      add : function () {
+        //add메서드 안에 arrowFunc화살표함수를 정의
+        const arrowFunc = () => {
+          //화살표 함수 내의 this는 상위 객체인 obj를 가리킴
+          console.log(this)
+        }
+        arrowFunc();
+      }
+    }
+    obj.add();
+  </script>
+</body>
+</html>

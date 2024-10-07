@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버튼으로 경고창표시(이벤트위임)</title>
+</head>
+<body>
+  <button type="button" class="btn1">버튼 추가</button>
+  <button type="button" class="btn2">버튼 제거</button>
+  <ul class="itemlist">
+    <li><input type="button" value="button1"></li>
+    <li><input type="button" value="button2"></li>
+  </ul>
+
+  <script>
+    /* 매번 요소가 새로 추가 될때마다 이벤트 리스너를 새로 작성하는 것이 아니라
+      부모요소에서 이벤트를 주고 이벤트 위임으로 자식요소에게 이벤트를 전달하여 사용할 수 있다. */
+    const itemlist = document.querySelector(".itemlist");
+
+    //itemlist에 클릭이벤트 추가 -> 클릭한 버튼요소의 value값을 출력
+    itemlist.addEventListener('click', e => alert(e.target.value))
+
+    //이벤트 버블링의 원리를 활용해 하위에서 발생한 클릭 이벤트를 상위요소인 .itemlist태그에서 감지하는것
+
+    //btn1변수에 버튼요소를 할당
+    const btn1 = document.querySelector(".btn1");
+
+    let i = 2;  //button글자 뒤에 붙는 순번
+    //btn1에 클릭이벤트 추가
+    btn1.addEventListener("click", () => {
+      i++;  //i값을 1증가 시킴
+
+      //li변수에 li요소를 생성하여 할당
+      let li = document.createElement("li");
+      //input요소 생성
+      let input = document.createElement("input");
+      //생성한 input요소에 type과 value 값을 할당
+      input.setAttribute("type", "button");
+      //value값을 button+i로 설정하여 증가된 숫자로 버튼번호를 넣어줌
+      input.setAttribute("value", "button" + i);
+
+      //li요소에 input요소를 추가
+      li.appendChild(input);
+      //.itemList요소에 생성한 li요소를 마지막 자손으로 추가
+      itemlist.appendChild(li);
+    })
+
+    //버튼제거
+    document.querySelector(".btn2").addEventListener("click", () => {
+      const li = document.querySelector(".itemlist > li:last-child");
+      i--;  //i값을 1감소(감소했을때 번호를 이어서 사용하기 위해 작성)
+
+      //마지막요소 제거
+      li.remove();
+    })
+
+  </script>
+</body>
+</html>

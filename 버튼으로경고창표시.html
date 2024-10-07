@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버튼으로 경고창표시</title>
+</head>
+<body>
+  <ul class="itemlist">
+    <li><input type="button" value="button1"></li>
+    <li><input type="button" value="button2"></li>
+  </ul>
+
+  <script>
+    //input요소를 nodeList로 할당
+    const buttons = document.querySelectorAll('input');
+
+    //buttons변수에 할당한 input요소들을 선택하고 forEach문으로 input요소를 순환하면서 click이벤트 생성 -> alert으로 input요솔의 value를 출력
+    buttons.forEach(button => button.addEventListener("click", e => alert(`${e.target.value} 클릭`)))
+
+    //button3 추가
+    //itmeList 선택
+    const itemList = document.querySelector(".itemlist");
+    //li변수에 li요소를 생성하여 할당
+    let li = document.createElement("li");
+    //input요소 생성
+    let input = document.createElement("input");
+    //생성한 input요소에 type과 value 값을 할당
+    input.setAttribute("type", "button");
+    input.setAttribute("value", "button3");
+
+    //li요소에 input요소를 추가
+    li.appendChild(input);
+    //.itemList요소에 생성한 li요소를 마지막 자손으로 추가
+    itemList.appendChild(li);
+
+    /*
+
+    */
+
+    //다른 버튼처럼 클릭 이벤트가 활성화되기 위해서는 아래처러머 이벤트를 추가하면 된다.
+    input.addEventListener("click", e => alert(`${e.target.value} 클릭`));
+
+  </script>
+</body>
+</html>
