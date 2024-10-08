@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>인터벌 슬라이드</title>
+<style>
+  .bigbox{
+    width:400px;
+    height:300px;
+    margin-top:100px;
+    margin-left:100px;
+    overflow:hidden;
+  }
+  .box{
+		position:relative;
+    width:1200px;
+    height:300px;
+  }
+  .box img{
+    position:absolute;
+    transition:all .3s
+  }
+  .box .leftPlus400{
+    left:400px;
+    transition:none;
+  }
+  .box .left0{
+    left:0px;
+  }
+  .box .leftMinus400{
+    left:-400px;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="bigbox">
+    <div class="box">
+      <img alt="이미지1" src="img/images/img1.jpg" class="left0"/>
+      <img alt="이미지2" src="img/images/img2.jpg" class="leftPlus400"/>
+      <img alt="이미지3" src="img/images/img3.jpg" class="leftPlus400"/>
+      <img alt="이미지4" src="img/images/img4.jpg" class="leftPlus400"/>
+    </div>
+  </div>
+
+  <script>
+    let i = 0;  //이미지의 순번을 담을 변수
+    //이미지 요소 선택
+    const boxImgs = document.querySelectorAll('.box > img');
+
+    //slide 함수 생성
+    function slide(){
+      //단축표현
+      //i가 boxImgs의 갯수와 같으면 i값을 0으로 할당
+      (i === boxImgs.length) && (i = 0)
+
+      //현재 보이는 이미지는 왼쪽으로 이동시킴
+      boxImgs[i].className = 'leftMinus400';
+      //다음 이미지를 bigbox의 오른쪽 밖에서 왼쪽 안쪽으로 이동
+      boxImgs[(i+1) % boxImgs.length].className = 'left0';
+      //다다음 이미지는 오른쪽 밖으로 이동시키면 됨
+      boxImgs[i+2].className = 'leftPlus400';
+
+      i++;
+    }
+
+    //슬라이드 함수 실행()
+    setInterval(slide, 1000);
+  </script>
+
+</body>
+</html>
