@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>이미지 갤러리</title>
+
+  <style>
+    *{margin:0;padding:0;}
+    ul,li{list-style:none;}
+    body{background-color:#333;}
+    img{border:0px;}
+    #wrap{width:640px;margin:100px auto 0 auto;}
+    #nav li{float:left;}
+    #nav li a{
+      display:block;border:2px solid #bbb;
+      margin:0 6px 10px 0;border-radius:5px;
+    }
+    #nav li a img{width:70px;}
+    #window{clear:both;}
+    #nav li a.active{border:2px solid #fff;}
+  </style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="nav">
+			<li><a href="img/images/lop0.jpg" class="active"><img src="img/images/thumb0.jpg"/></a></li>
+			<li><a href="img/images/lop1.jpg"><img src="img/images/thumb1.jpg"/></a></li>
+			<li><a href="img/images/lop2.jpg"><img src="img/images/thumb2.jpg"/></a></li>
+			<li><a href="img/images/lop3.jpg"><img src="img/images/thumb3.jpg"/></a></li>
+			<li><a href="img/images/lop4.jpg"><img src="img/images/thumb4.jpg"/></a></li>
+			<li><a href="img/images/lop5.jpg"><img src="img/images/thumb5.jpg"/></a></li>
+			<li><a href="img/images/lop6.jpg"><img src="img/images/thumb6.jpg"/></a></li>
+			<li><a href="img/images/lop7.jpg"><img src="img/images/thumb7.jpg"/></a></li>
+		</ul>
+		<div id="window"><img src="img/images/lop0.jpg"/></div>
+	</div>
+
+  <script>
+    //navLi 변수 생성
+    const navLi = document.querySelectorAll("#nav li a");
+    //모든 a요소에 클릭이벤트를 추가하고 
+    navLi.forEach(item => item.addEventListener('click', (e) => {
+      e.preventDefault(); //a태그 기본링크 제거
+
+      //클릭한 a요소에 href값을 img_url변수에 할당
+      const img_url = item.getAttribute('href');
+
+      //window자식요소인 img요소의 src 속성값으로 img_url을 할당
+      document.querySelector('#window img').setAttribute('src', img_url);
+      for(const item of navLi){
+        item.classList.remove('active');  //모든 a요소에 active클래스를 제거
+      }
+
+      item.classList.add('active'); //클릭한 a요소에 active클래스를 추가
+    }))
+  </script>
+</body>
+</html>
