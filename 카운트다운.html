@@ -62,7 +62,39 @@
 
   <script>
     //카운트다운 날짜를 설정
-    const countDownDate = new Date("Nov 5, 2024");
+    //gitTime()메소드로 날짜정보를 밀리세컨드 단위의 숫자로 변환
+    const countDownDate = new Date(2024, 9, 10, 14, 48).getTime();  //Date로 날짜랑 시간 지정
+    //console.log(countDownDate); //날짜정보가 밀리세컨드 단위로 변환된 값 출력
+
+    //1초마다 카운트다운 업데이트
+    let x = setInterval(function(){
+      //오늘 날짜 및 시간정보를 변수에 할당
+      let now = new Date().getTime();
+
+      //카운트다운 날짜 - 오늘 날짜 = 남은시간(밀리세컨드 단위 값으로 반환)
+      let distance = countDownDate - now;
+      //console.log(distance);  //확인
+
+      //일, 시간, 분, 초에 대한 시간 계산
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24)); //남은날짜
+      //console.log(days);  //확인
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));  //남은 시간
+      //console.log(hours);  //확인
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  //남은 분
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);  //남은 초
+
+      //남은시간 전체 확인(날짜, 시간, 분, 초)
+      //console.log(days, hours, minutes, seconds);
+
+      //#demo인 요소에 결과 표시
+      document.getElementById("demo").innerHTML = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`
+
+      //카운트다운이 완료되면 이벤트 종료문자 출력
+      if(distance < 0){
+        clearInterval(x); //setInterval함수를 종료
+        document.getElementById("demo").innerHTML = "이벤트 종료";
+      }
+    }, 1000);
   </script>
 </body>
 </html>
