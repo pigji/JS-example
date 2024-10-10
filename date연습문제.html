@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>date 연습문제</title>
+</head>
+<body>
+  <script>
+    //현재 날짜부터 12월 25일 크리스마스까지 며칠이 남아 있는지 계산하는 프로그램입니다. 
+
+    // 현재날짜 정보 설정
+    var date = new Date(2024, 9, 10); //0부터 카운트하기 때문에 10월은 9로 표시
+    console.log("현재날짜 : " + date);  //확인
+
+    // 년도 가져오기
+    var year = date.getFullYear(); 
+    console.log(year);  //확인
+
+    // 같은 해의 크리스마스 날짜 정보
+    var christmas = new Date(year, 11, 25); //0부터 카운트하기 때문에 12월은 11로 표시
+
+    var diffTime = christmas - date; // 크리스마스까지 남은 날짜 계산(밀리세컨드)
+    var diffDay = diffTime / (1000*60*60*24); // 남은 날짜 계산(밀리세컨드 --> 날짜로) 
+    console.log('크리스마스까지 남은날: ' + Math.ceil(diffDay));
+
+
+    /*-----------------------------------------------------*/
+    //어린이날부터 12월 25일 크리스마스까지 며칠이 남아 있는지 계산하는 프로그램입니다. 
+
+    // 어린이날 정보 설정
+    var date = new Date(2024, 6, 5);
+    console.log("어린이날 : " + date);  //확인
+
+    // 년도 가져오기
+    var year = date.getFullYear(); 
+    console.log(year);  //확인
+
+    // 같은 해의 크리스마스 날짜 정보
+    var christmas = new Date(year, 11, 25); //0부터 카운트하기 때문에 12월은 11로 표시
+    
+    var diffTime = christmas - date; // 크리스마스까지 남은 날짜 계산(밀리세컨드)
+    var diffDay = diffTime / (1000*60*60*24); // 남은 날짜 계산(밀리세컨드 --> 날짜로) 
+    console.log('어린이날부터 크리스마스까지 남은날: ' + Math.ceil(diffDay));
+  </script>
+</body>
+</html>

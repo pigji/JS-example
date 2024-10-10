@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>특정날짜 정보</title>
+</head>
+<body>
+  <script>
+    //6개의 파라미터(연, 월, 일, 시, 분, 초)를 입력하여 특정 날짜정보를 저장합니다.
+    let birthDay = new Date(2000, 0, 22, 10, 10, 10);
+    console.log('birthDay' + birthDay);
+
+    let date = new Date(2021, 10, 10);
+    console.log(date);
+
+    //특정 날짜정보(getDay())를 읽은 후에 50을 더하고 setDate()를 이용하여 저장
+    date.setDate(date.getDay() + 50);
+    //50일 이후의 날짜정보를 출력
+    console.log('현재 날짜 + 50일 이후 : ' + date);
+  </script>
+</body>
+</html>

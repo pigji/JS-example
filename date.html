@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>date</title>
+</head>
+<body>
+  <script>
+    //Date객체 생성
+    let today = new Date();
+    console.log(today); //현재 날짜정보 출력
+
+    //요일정보를 배열로 할당
+    let weekday = [
+      'Sunday',
+      'Monday',
+      'Tueday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ];
+
+    //Date객체의 다양한 메소드를 이용하여 현재 시각 및 날짱 정보를 가져옵니다.
+    document.write("연도 : " + today.getFullYear() + "<br>");
+
+    //1월을 0으로 인식하여 +1을 해야 해당 월이 표시됨
+    document.write("월 : " + (today.getMonth()+1) + "<br>"); 
+    document.write("일 : " + today.getDate() + "<br>");
+
+    //일요일을 0으로 인식하여 요일을 할당하는 weekday배열을 할당하여 표현
+    document.write("요일 : " + weekday[today.getDay()] + "<br>");
+    document.write("시 : " + today.getHours() + "<br>");
+    document.write("분 : " +  today.getMinutes() + "<br>");
+    document.write("초 : " + today.getSeconds() + "<br>");
+  </script>
+</body>
+</html>
