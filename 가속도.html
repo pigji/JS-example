@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>가속도</title>
+
+	<style>
+		.box1 {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box box1">
+		상자1
+	</div>
+
+  <script>
+    const box1 = document.querySelector(".box");
+    let i = -90;  //애니메이션의 진행상태를 나타내는 변수, -90으로 초기화
+    //이 값은 나중에 sin함수의 입력으로 사용되며, 애니메이션의 진행정도를 나타냅니다.
+
+    //함수 생성
+    function box1Animation(){
+      //현재 i값을 sin함수에 넣어서 계산합니다. 값은 0에서 1사이의 범위를 가집니다.
+      //일정하지 않은 가속도를 가진 애니메이션을 적용하기 위해 사용한다.
+      const ease = ((Math.sin(i * Math.PI / 180)) + 1) / 2; //2진값 구하는 공식
+
+      box1.style.left = `${0 + (500 * ease)}px`;  //0에서 500사이로 이동
+      //i값을 매 프레임마다 증가 시킵니다.(1초에 60번)
+      i+= 180/60;
+
+      if(i >= 90){  //i가 90보다 커지면 i값을 90으로 고정시키고 반복함수를 종료
+        i = 90;
+        return clearInterval(id);
+      }
+    }
+    //1초에 60프레임으로 반복함수 호출
+    const id = setInterval(box1Animation, 1000/60);
+
+
+    </script>
+</body>
+</html>
