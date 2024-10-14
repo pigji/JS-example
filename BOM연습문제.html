@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+  <title>BOM연습문제</title>
+
+  <style>
+    fieldset{ margin: 10px; }
+    legend{
+        padding: 5px;
+        background-color: lightblue;
+    }
+    input[type="text"]{
+        box-sizing: border-box;
+        padding: 5px;
+        width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+	<fieldset>
+    <legend>alert()</legend>
+    <input type="text" name="alert" value="클릭하세요">
+	</fieldset>
+	
+	<fieldset>
+    <legend>confirm()</legend>
+    <button type="button">confirm()</button>
+    <hr>
+    <input type="text" name="confirm" readonly="readonly">
+	</fieldset>
+	
+	<fieldset>
+    <legend>prompt()</legend>
+    <input type="button" value="prompt()">
+    <hr>
+    <input type="text" name="prompt" disabled="disabled">
+	</fieldset>
+	
+<script>
+	//이곳에 코드를 작성해주세요.
+
+  //1번. input을 클릭하면 경고창을 띄우는 코드를 작성해 주세요
+  const btn = document.querySelector("input");
+  //클릭이벤트 추가
+  btn.onclick = function(){
+    alert('클릭하세요.');
+  }
+
+  //2번. confirm을 누르고, 확인 버튼을 누르면 “멋져요~~” 라는 글자가 input에 출력 되고, 취소를 누르면 “조금만 더 힘을 내요~”가 출력 되게 코드를 작성해 주세요
+
+  
+  //3번. prompt 버튼을 누르고 이름을 입력하면 “~~~님 안녕하세요” 라는 글자가 input에 출력 되게 코드를 작성해 주세요.
+
+
+  //alert()
+
+</script>
+
+</body>
+</html>

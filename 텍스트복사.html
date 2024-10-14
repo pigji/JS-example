@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트 복사</title>
+</head>
+
+<body>
+  <!-- The text field -->
+  <input type="text" value="Hello World" id="myInput">
+
+  <!-- The button used to copy the text -->
+  <button onclick="myFunction()">Copy text</button>
+
+  <script>
+    function myFunction(){
+      //input요소 선택
+      const copyText = document.getElementById("myInput");
+
+      //input요소에 입력된 글자를 임시저장
+      navigator.clipboard.writeText(copyText.value);
+    }
+  </script>
+</body>
+
+</html>

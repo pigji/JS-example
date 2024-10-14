@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>location 객체</title>
+
+  <style>
+    button,
+    select,
+    textarea {
+      padding: 5px 10px;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <button type="button">현재 페이지 URL</button>
+  <select name="gosite">
+    <option value="">::선택이동::</option>
+    <option value="www.nate.com">네이트</option>
+    <option value="www.daum.net">다음</option>
+    <option value="www.naver.com">네이버</option>
+    <option value="www.google.com">구글</option>
+  </select>
+  <hr>
+  <textarea name="url" cols="40" rows="3"></textarea>
+
+  <script>
+    //함수 생성
+    const btn = document.querySelector('button');
+    const move = document.querySelector('select[name = "gosite"]');
+    
+    //select태그의 option이 변경되었을때
+    move.onchange = function(){
+      console.log(this.value);  //변경되는 option값 확인
+      
+      //선택된 option태그에 value값이 빈문자열이 아닐때 실행
+      if(this.value){
+        //option에 value속성의 값이 있을 경우에만 assign을 실행
+        location.assign('https://' + this.value);
+      }
+    }
+
+    //현재 페이지 URL을 textarea의 값으로 넣어줌
+    btn.onclick = function(){
+      document.querySelector('textarea').value = location.href;
+    }
+  </script>
+</body>
+</html>
