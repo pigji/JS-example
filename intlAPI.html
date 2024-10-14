@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>international API</title>
+</head>
+<body>
+  <script>
+    //숫자 간격하게 나타내기
+    const views = 9744954;
+    //NumberFormat()의 첫번째 인수로 언어 선택(ko, en 등) 또는 navigator.language로 브라우저에서 설정한 언어를 선택 할 수 있음
+    //두번째 인자로 옵션을 전달할 수 있다
+    const formatter = new Intl.NumberFormat(navigator.language, {
+      notation: 'compact',
+      compactDisplay: 'long'
+    });
+    document.write(formatter.format(views) + "<br>");
+  </script>
+</body>
+</html>
