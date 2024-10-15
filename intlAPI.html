@@ -18,6 +18,42 @@
     });
     document.write(formatter.format(views) + "<br>");
 
+    //상대시간 나타내기
+    const formatter2 = new Intl.RelativeTimeFormat('ko', {  //en은 영어표현, ko은 한국어 표현
+      //언어를 ko로 설정하면 내일, 모레, 어제, 그저께로 표현됨
+      numeric : 'auto'
+    })
+
+    //기준을 day, hour, mimute, second, month, quarter(분기)로 설정할 수 있음
+    document.write(formatter2.format(1, 'day') + "<br>"); //하루 뒤(내일) tormorrow 출력
+    document.write(formatter2.format(2, 'day') + "<br>"); //이틀 뒤 in 2day 출력
+    document.write(formatter2.format(-1, 'day') + "<br>"); //하루 전  yesterday 출력
+    document.write(formatter2.format(-2, 'day') + "<br>"); //이틀 전  2 days ago 출력
+
+    //지나간 날짜 계산하기
+    const today = new Date(); //현재 시간정보
+    const started = new Date(2024, 9, 1)  //지난 날짜정보(2024년 10월 1일)
+    const daysPassed = Math.ceil((started - today) / (1000 * 60 * 60 * 24))
+    document.write(formatter2.format(daysPassed, 'day') + "<br>"); // ~일 전 츌룍
+
+    //날짜&시간 제대로 포맷하기
+    const date = new Date(2019, 10, 12);
+    console.log(date)
+    document.write(new Intl.DateTimeFormat('en-US').format(date) + "<br>")  // 미국표현 : 11/12/2019 출력
+    document.write(new Intl.DateTimeFormat('ko').format(date) + "<br>") // 대한민국표현 : 2019. 11. 12. 출력
+    document.write(new Intl.DateTimeFormat('de').format(date) + "<br>") // 덴마크표현 : 12.11.2019 출력
+
+    document.write(
+      date.toLocaleDateString('ko',{
+        minute : 'numeric',
+        hour : 'numeric',
+        day : 'numeric',
+        month : 'long',
+        year : 'numeric',
+        weekday : 'short',  //2019년 11월 12일 화 오전 12:00 출력
+      })
+    )
+
   </script>
 </body>
 </html>
