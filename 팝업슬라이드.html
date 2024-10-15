@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>팝업 슬라이드</title>
+
+	<style>
+		* {margin: 0; padding: 0;}
+		img {border: none; vertical-align: top;}
+
+		li{
+			list-style: none;
+			float: left;
+			width: 80px;
+		}
+
+		/*img의 크기 72px - 여백(8px)*/
+
+		h1 {
+			text-align: center;
+		}
+
+		#popup{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			visibility: hidden;
+			opacity: 0;
+			transition: all 0.5s;
+		}
+
+		#popup.on{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		#banner_wrap{
+			position: absolute;
+			top: -20%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #fff;
+			border-radius: 10px;
+			width: 260px;
+			padding: 10px 20px;
+			margin: 0 auto;
+			border: 1px solid #aaa;
+			transition: all 0.5s 0.5s;
+		}
+
+		#banner_wrap.on{
+			top: 50%;
+		}
+		
+		#banner{
+			width: 800px;
+			border: 1px solid red;
+			height: 54px;
+		}
+
+		#frame{
+			width: 232px;
+			height: 54px;
+			position: relative;
+			margin: 10px auto;
+			border: 1px solid blue;
+			overflow: hidden;
+		}
+
+		#btn{
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+	</style>
+
+
+
+</head>
+
+<body>
+	<h1>팝업 롤링 슬라이드 배너 만들기</h1>
+	<div id="popup">
+		<div id="banner_wrap">
+			<div id="frame">
+				<ul id="banner">
+					<li><a href="#"><img src="img/images/pic_t1.jpg" alt="사진1"></a></li>
+					<li><a href="#"><img src="img/images/pic_t2.jpg" alt="사진2"></a></li>
+					<li><a href="#"><img src="img/images/pic_t3.jpg" alt="사진3"></a></li>
+					<li><a href="#"><img src="img/images/pic_t4.jpg" alt="사진4"></a></li>
+					<li><a href="#"><img src="img/images/pic_t5.jpg" alt="사진5"></a></li>
+
+				</ul>
+			</div>
+			<p>
+				<a href="#" class="prev">
+					<img src="img/images/prev_btn.png" alt="이전 버튼">
+				</a>
+				<a href="#" class="next">
+					<img src="img/images/next_btn.png" alt="다음 버튼">
+				</a>
+
+			</p>
+			<button id="btn">close</button>
+		</div>
+	</div>
+
+	<div id="main">
+		<a href="#"><img src="img/images/pic_1.jpg" alt="사진1"></a>
+	</div>
+
+  <script>
+    //팝업 슬라이드 이미지 선택
+    const list = document.querySelector("#banner");
+    const listLi = document.querySelectorAll("#banner li");
+    const show_num = 3; //보여지는 이미지 갯수
+    const total = listLi.length;  //슬라이디의 갯수
+    const li_width = listLi[0].offsetWidth; //첫번째 슬라이드 이미지의 넓이를 변수에 할당
+
+    //보여지는 이미지의 슬라이드의 갯수만큼 슬라이드를 복제
+    for(let i = 0; i < show_num; i++){
+      //순번이 i번째인 li요소를 복제
+      const copyobj = listLi[i].cloneNode(true);
+      //list의 마지막 자손으로 copyobj를 추가
+      list.appendChild(copyobj);
+    }
+
+    //슬라이드의 순번을 담을 변수
+    let num = 0;
+
+    //오른쪽 화살표 버튼 클릭시 이벤트 추가(다음버튼)
+    document.querySelector('.next').addEventListener('click', (e) => {
+      e.preventDefault(); //a태그 기본링크 제거
+      //num값이 슬라이드 갯수와 같으면
+      if(num === total){
+        num = 0;  //num값을 0으로 초기화(처음 슬라이드)
+        list.sytle.transition = 'none'; //애니메이션이 되지 않도록 함
+        list.style.marginLeft = '0%'; //left위치를 초기화
+      }
+      //0.05초 뒤에 함수 실행
+      setTimeout(function(){
+        num++;
+        list.style.transition = 'margin-left .5s';  //애니메이션 효과 적용
+        list.style.marginLeft = `${-li_width * num}px`; //슬라이드 한개의 넓이*num만큼 이동
+      }, 50)
+    })
+
+    //왼쪽 화살표 버튼 클릭시 이벤트 추가(이전버튼)
+    document.querySelector('.prev').addEventListener('click', (e) => {
+      e.preventDefault(); //a태그 기본링크 제거
+      if(num === 0){
+        num = total;  //슬라이드의 마지막 순번을 할당
+        list.style.transition = 'none';
+        list.style.marginLeft = `${-li_width * num}px`; //슬라이드의 마지막 순번위치로 이동
+      }
+      setTimeout(function(){
+        num--;
+        list.style.transition = 'margin-left .5s';
+        list.style.marginLeft = `${-li_width * num}px`
+      }, 50)
+    })
+
+    //팝업창 기능
+    const popup = document.querySelector("#popup");
+    const bannerWrap = document.querySelector("#banner_wrap");
+
+    //#main의 자식인 a요소를 클릭했을때 팝업창이 나타나도로 구현
+    document.querySelector("#main a").addEventListener('click', (e) => {
+      e.preventDefault(); //a태그 기본링크 제거
+      //
+      popup.classList.add("on");
+      bannerWrap.classList.add("on");
+    })
+
+    //close버튼을 클릭했을때 팝업창 숨김
+    document.querySelector("#btn").addEventListener('click', () => {
+      popup.classList.remove("on");
+      bannerWrap.classList.remove("on");
+    })
+
+  </script>
+
+</body>
+</html>
