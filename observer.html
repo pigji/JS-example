@@ -24,12 +24,23 @@
 
     <script>
       //1. 관찰대상이 범위 안에 나타나면 실행하는 동작
-      const showKirin = (enties) => {
+      const showKirin = (entries) => {
+        console.log(entries[0].target);  //교차상태 정보 살펴보기
 
+        //5. 움직임 추가
+        const keyframes = {
+          opacity: [0, 1],
+          translate: ["200px 0", 0]
+        };
+        //6초에 걸쳐 애니메이션 효과 적용
+        entries[0].target.animate(keyframes, 6000);
       }
 
       //2. 새로운 이름을 붙여서 관찰 로봇 설정
       const kirinObserver = new IntersectionObserver(showKirin) //3. 관찰 로봇에게 1에게 정해둔 동작 내요 지시
+
+      //4. #kirin을 관찰하도록 지시
+      kirinObserver.observe(document.querySelector('#kirin'));
     </script>
 </body>
 </html>
