@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스를 따라다니는 overlay</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+
+    #works{
+      width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      position: relative;
+    }
+    #works > .box{
+      /* border: 1px solid red;  영역 확인용 */
+      width: 300px;
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      display: flex;  /*텍스트 정렬용*/
+      justify-content: center;
+      align-items: center;
+    }
+
+    /*각 요소 이미지 넣기*/
+    #works > .box:nth-of-type(1){
+      background-image: url(img/images/image01.jpg);
+    }
+    #works > .box:nth-of-type(2){
+      background-image: url(img/images/image02.jpg);
+    }
+    #works > .box:nth-of-type(3){
+      background-image: url(img/images/image03.jpg);
+    }
+    #works > .box:nth-of-type(4){
+      background-image: url(img/images/image04.jpg);
+    }
+
+    #works > .overlay{
+      width: 300px;
+      height: 280px;
+      position: absolute;
+      background-color: rgba(0,0,0,0.5);
+      left: 0; top: 0;
+      z-index: 1;
+      /*포인터 이벤트가 전달되지 않도록 함*/
+      pointer-events: none;
+      opacity: 0;
+      transition: all .5s;
+    }
+    /*텍스트*/
+    #works .box h1{
+      color: #fff;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+    }
+
+    #works .box:hover h1{
+      opacity: 1;
+      animation: scale 0.5s;
+    }
+    /*애니메이션 속성*/
+    @keyframes scale{
+      50%{scale:1.5;}
+    }
+  </style>
+</head>
+<body>
+  <section id="works">
+    <div class="overlay"></div>
+    <article class="box">
+      <h1>TEXT</h1>
+    </article>
+    <article class="box">
+      <h1>TEXT</h1>
+    </article>
+    <article class="box">
+      <h1>TEXT</h1>
+    </article>
+    <article class="box">
+      <h1>TEXT</h1>
+    </article>
+  </section>
+
+  <script>
+    const boxes = document.querySelectorAll(".box");
+    const overlay = document.querySelector(".overlay");
+    const boxWd = boxes[0].offsetWidth; //box의 넓이
+    //console.log(boxWd)  //넓이 값 출력
+
+    //모든 box요소에 mouseover이벤트 리스너 추가
+    boxes.forEach((box, idx) => box.addEventListener('mouseover', () => {
+      overlay.style.opacity = 1;  //opacity를 1로 변경하여 화면에 표시
+      overlay.style.left = boxWd * idx + "px";  //overlay의 left값을 boxWd*idx로 적용하여 위치를 이동시킴
+    }))
+    //모든 box요소에 mouseout이벤트 리스너 추가
+    boxes.forEach((box, idx) => box.addEventListener('mouseout', () => {
+      overlay.style.opacity = 0;  //opacity를 0으로 변경하여 화면에 안보이게 함
+    }))
+  </script>
+</body>
+</html>

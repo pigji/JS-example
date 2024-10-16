@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤과 애니메이션 조합하기</title>
+
+		<style>
+			body {
+			    text-align: center;
+			    padding: 1rem;
+			}
+			h1 {
+			    margin: 50vh 0 50vh;
+			}
+			img {
+			    max-width: 100%;
+			}
+		</style>
+</head>
+<body>
+    <h1>↓ 스크롤 ↓</h1>
+    <img src="img/images/kirin.jpg" id="kirin" alt="기린">
+
+    <script>
+      //1. 관찰대상이 범위 안에 나타나면 실행하는 동작
+      const showKirin = (enties) => {
+
+      }
+
+      //2. 새로운 이름을 붙여서 관찰 로봇 설정
+      const kirinObserver = new IntersectionObserver(showKirin) //3. 관찰 로봇에게 1에게 정해둔 동작 내요 지시
+    </script>
+</body>
+</html>

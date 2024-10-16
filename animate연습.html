@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>animate연습</title>
+  
+  <style>
+    .grid{
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      max-width: 1020px;
+      margin: auto;
+      padding: 30px;
+    }
+    .img-item{
+      opacity: 1;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <img class="img-item" src="img/images/summer1.jpg" alt="">
+    <img class="img-item" src="img/images/summer2.jpg" alt="">
+    <img class="img-item" src="img/images/summer3.jpg" alt="">
+    <img class="img-item" src="img/images/summer4.jpg" alt="">
+    <img class="img-item" src="img/images/summer5.jpg" alt="">
+    <img class="img-item" src="img/images/summer6.jpg" alt="">
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.img-item');
+    
+    for(let i = 0; i < items.length; i++){
+      const keyframes = {
+        opacity: [0, 1],
+        //rotate: ['x 90deg', 0]  //회전하면서 나타나는 효과
+        //translate: ['0 50px', 0]  //밑에서 위로 올라오는 효과
+        filter: ['blur(20px)', 'blur(0)'] //흐렸다가 점점 선명하게 나타나는 효과
+      }
+      const options = {
+        duration: 600,
+        delay: i * 300, //0부터 순차적으로 0.3씩 증가하여 딜레이를 적용함
+        fill: 'forwards'  //마지막 프레임 유지
+      }
+      items[i].animate(keyframes, options); //item요소를 순차적으로 animate메소드 적용
+    }
+  </script>
+</body>
+</html>
