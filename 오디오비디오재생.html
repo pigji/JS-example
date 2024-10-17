@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오디오&비디오 재생</title>
+
+  <style>
+    video {
+      background: #000;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9비율 */
+      padding-top: 25px;
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!--오디오 재생-->
+  <audio id="myAudio"></audio>
+
+  <button class="aBtn" type="button">시작(play)</button>
+  <button class="aBtn" type="button">멈춤(pause)</button>
+
+  <hr>
+
+  <audio controls>
+    <source src="img/images/happybirthday.ogg" type="audio/ogg">
+    <source src="img/images/happybirthday.mp3" type="audio/mpeg">
+    사용하는 브라우저가 HTML5(audio태그)를 지원하지 않습니다.
+  </audio>
+
+  <!--비디오 재생-->
+  <video id="myVideo" width="320" height="240" controls>
+    <source src="img/images/비디오.mp4" type="video/mp4">
+    사용하는 브라우저가 HTML5(video태그)를 지원하지 않습니다.
+  </video>
+  <br>
+  <button class="vBtn" type="button">시작(play)</button>
+  <button class="vBtn" type="button">멈춤(pause)</button>
+
+  <hr>
+
+  <!--유튜브 영 링크-->
+  <div class="video-container">
+    <!--영상은 유튜브에서 공유 > 퍼가기로 링크 주소를 가져오면 됨-->
+    <iframe src="https://www.youtube.com/embed/W3eIzS0E_G0" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    //오디오 재생
+    const audio = document.querySelector('#myAudio');
+    const aBtns = document.querySelectorAll('.aBtn');
+
+    //플레이(play) 버튼을 클릭하면
+    aBtns[0].addEventListener('click', function(){
+      //오디오 태그의 src속성 값을 설정
+      audio.scr = 'img/images/happybirthday.mp3';
+      audio.play(); //오디오를 재생
+    })
+
+    //멈춤(stop)버튼을 클릭하면
+    aBtns[1].addEventListener('click', function(){
+      audio.pause();  //오디오를 멈춤
+    })
+
+    //비디오 재생
+    const video = document.querySelector('#myVideo');
+    const vBtns = document.querySelectorAll('.vBtn');
+    video.poster = 'img/images/pic_1.jpg';
+
+    vBtns[0].addEventListener('click', function(){
+      video.currentTime = 0 //영상의 첫번째 프레임으로 이동
+      video.play();
+    })
+    vBtns[1].addEventListener('click', function(){
+      video.pause();
+    })
+
+  </script>
+</body>
+</html>

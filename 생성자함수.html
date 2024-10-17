@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>생성자 함수</title>
+</head>
+<body>
+  <script>
+    //object 생성자 함수
+    //new연산자와 함께 Object생성자 함수를 호출하면 빈 객체를 생성하여 반환한다.
+    const log = console.log;
+    //빈 객체생성
+    const person = new Object();
+    log(person) //확인
+
+    //프로퍼티 추가
+    person.name = "Lee";
+    log(person) //Lee 출력
+    person.sayHello = function(){
+      console.log('Hi! My name is ' + this.name)
+    }
+
+    person.sayHello();  //Hi! My name is Lee 출력 확인
+  </script>
+</body>
+</html>
