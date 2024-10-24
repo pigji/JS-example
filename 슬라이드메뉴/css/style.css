@@ -151,7 +151,7 @@ img {
 	background: #f4f4f4;
 	border-bottom: 1px dotted #eaeaea;
 	box-sizing: border-box;
-	transition: background 0.3s;
+	transition: all 0.3s;
 }
 .mobile_nav .sub li a:hover {
 	background: #fff;
