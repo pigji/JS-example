@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤과 애니메이션 조합하기</title>
+    <style>
+	    .container {
+			    max-width: 800px;
+			    margin: auto;
+			    padding: 2rem;
+			}
+			h1 {
+			    margin: 40rem 0 1rem;
+			}
+			
+			.scroll {
+			    position: relative;
+			    overflow: hidden;
+			    display: inline-block;
+			}
+			.scroll::before {
+			    background: #ed8;
+			    position: absolute;
+			    content: '';
+			    display: block;
+			    inset: 0;
+			}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="scroll">자바스크립트란 프로그램 언어 중 하나</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque nostrum eius itaque obcaecati eum non quos perferendis explicabo inventore hic tempore dicta magnam sint, suscipit autem ducimus doloribus voluptatum modi!
+				Culpa fugiat, quis, vero dolorem similique, et suscipit expedita quam omnis cumque minus? Adipisci, tempora. Ducimus, laudantium ipsam magni excepturi alias deserunt ipsa non modi, aspernatur, tempora sint soluta nihil.
+				Vel neque accusamus quasi nesciunt voluptates optio eius aliquam odio quidem maxime! Veritatis expedita vitae tenetur dolorum pariatur, obcaecati autem, error sed itaque eos voluptatum labore enim eum iste quae?
+				Laborum itaque dolore modi beatae voluptatem illo aliquam perspiciatis, sed doloremque tempore voluptatibus ut, saepe autem id quod cum fuga inventore. Necessitatibus odio amet non facere omnis eum ea hic!
+				Cupiditate non eum quam, labore autem ducimus quis ut minima unde totam aut inventore. Magnam explicabo provident labore placeat impedit doloribus ea laudantium blanditiis cupiditate porro excepturi amet, dicta repellat?
+				Ratione esse illum, adipisci labore commodi odit inventore. Necessitatibus pariatur expedita, consequuntur sit consectetur suscipit numquam quisquam. Alias nemo necessitatibus cum iste, quidem nesciunt iure quis saepe, veritatis quo consequuntur.
+				Totam eaque adipisci harum ad nam non sint atque odio ex ratione sapiente vitae aperiam itaque, consequatur temporibus in ducimus molestiae rerum cumque dolor incidunt laboriosam distinctio a alias. Consectetur?
+				Impedit, aliquam unde? Voluptatem dignissimos, asperiores animi eius nulla maiores! Consectetur dolores dignissimos eligendi rem ad commodi ducimus tenetur facilis dolor? Cupiditate molestiae fuga culpa nam! Nihil deleniti voluptatum vero?
+				Ea hic voluptatem corporis fugiat nobis nihil architecto porro vitae quos possimus, provident aliquid. Tempora quae aut quisquam maxime aperiam omnis eius, ullam dolores voluptates, earum ex! Quam, mollitia labore.
+				Corporis praesentium consectetur sed alias laborum soluta quam consequuntur eaque sunt adipisci voluptatem beatae tenetur ipsa, odit dolore laboriosam dolorum. Voluptatem qui quos totam itaque veniam facere mollitia esse molestias?</p>
+
+    </div>
+		<script>
+			//관찰 대상이 범위 안에 들어오면 실행하는 동작
+			const animateScroll = (entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){//해당요소객체가 화면에 나타나면 .isIntersecting이 true로 할당된다.
+          entry.target.animate(
+            {translate: [0, "100%"]},
+            {
+              duration:2000,
+              //옵션에서 가상요소를 선택하면 가상요소에 애니메이션이 적용됨
+              pseudoElement: "::before",
+              easing: 'ease',
+              fill: "forwards"
+            }
+          );
+          //한번 표시되었다면 관찰 중지
+          obs.unobserve(entry.target)
+        }
+      })
+    }
+
+    //관찰 설정
+    const scrollObserver = new IntersectionObserver(animateScroll);
+
+    //관찰 지시
+    const scrollElements = document.querySelectorAll('.scroll');
+    scrollElements.forEach(scrollElement => {
+      scrollObserver.observe(scrollElement);
+    })
+	</script>
+</body>
+</html>

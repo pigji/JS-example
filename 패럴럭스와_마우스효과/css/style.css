@@ -1,0 +1,152 @@
+/*초기화*/
+*{    
+  margin:0;     
+  padding:0; 	
+  box-sizing:border-box; 	
+  user-select: none; /*text드래그 금지*/   
+}
+ul{ list-style: none; }
+a{ text-decoration : none; color:inherit; }
+
+/*header*/
+header{
+  width:100%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:20px 80px;
+  color:#111;
+}
+.logo{
+  font-size:40px;
+}
+.toggle{
+  font-size:30px;
+}
+.logo:hover,
+.toggle:hover{
+  color:#ff3156;
+}
+/*-----------------------------------*/
+/*container*/
+section{
+  width:1200px;
+  margin:auto;
+}
+
+article{
+  width:100%;
+  padding:60px 10px;
+  display:flex;
+  align-items: center;
+}
+
+.imgBox{
+  width:680px;
+  height:440px;
+  overflow:hidden;
+  position:relative;
+}
+.image{
+  position:absolute;
+  width:100%;
+  height:800px;
+  left:0; bottom:0;
+}
+article:nth-child(1) .image{
+  background:url(../images/parallax1.jpg) center/cover;
+}
+article:nth-child(2) .image{
+  background:url(../images/parallax2.jpg) center/cover;
+}
+article:nth-child(3) .image{
+  background:url(../images/parallax3.jpg) center/cover;
+}
+article:nth-child(4) .image{
+  background:url(../images/parallax4.jpg) center/cover;
+}
+article:nth-child(5) .image{
+  background:url(../images/parallax5.jpg) center/cover;
+}
+
+.txt{
+  padding-left:70px;
+}
+.txt p{
+  font-size:12px;
+  color:#676767;
+  letter-spacing: 2px;
+}
+
+.txt > h2{
+  color:#111;
+  font-size:36px;
+  margin:30px 0 20px;
+}
+
+.txt a{
+  font-size:14px;
+  color:#111;
+  font-weight: bold;
+  padding:10px 0;
+  transition:color 0.2s;
+}
+.txt a i{
+  font-size:40px;
+  padding-left:20px;
+  vertical-align: middle;
+  transition:padding 0.2s;
+}
+.txt a:hover{color:#ff3156;}
+.txt a:hover i{padding-left:30px;}
+/*-----------------------------------*/
+footer{
+  width:100%;
+  padding:100px 0;
+  text-align: center;
+  background-color:#111;
+  color:#fff;
+  font-size:20px;
+}
+/*-----------------------------------*/
+/*커서 이펙트*/
+.cursor_effect{
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  z-index: 999;
+  pointer-events: none; /*클릭이 안되도록 설정*/
+  /*커서 이펙트가 마우스커서를 쫓아올때 자연스러운 애니메이션 효과를 주기 위해 가속도를 cubic-bezier로 역동적으로 설정*/
+  transition:transform 0.1s cubic-bezier(.12, .75, .34, .98);
+}
+
+/*커서 이펙트를 감싸는 요소로 마우스 커서가 이펙트의 중심에 오도록 설정*/
+.cursor_effect > .cursor_wrap{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%); /*가운데 위치하도록 -50% 설정*/
+  opacity: 0.25;
+}
+/*실제 커서 이펙트가 표시될 부분*/
+.cursor_effect .cursor_icon{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: #888;
+  transition: transform 0.2s, width 0.3s, height 0.3s;
+}
+/*커서 이펙트의 on클래스가 추가되면 이펙트의 크기를 변경*/
+.cursor_effect.on .cursor_icon{
+  width: 300%;
+  height: 300%;
+  box-shadow: 0 0 8px black;
+}
+
+/*마우스를 클릭했을때 on클래스 추가하여 효과를 적용*/
+.cursor_icon.on{
+  transform:translate(-50%, -50%) scale(0.6);
+}
