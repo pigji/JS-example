@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas class="canvas1" width="600" height="400" style="background: #eee;"></canvas>
+  <canvas class="canvas2" width="600" height="400" style="background: #eee;"></canvas>
+
+  <script>
+    //사각형 그리기
+    const canvas1 = document.querySelector(".canvas1");
+    const context1 = canvas1.getContext("2d");
+
+    //fillRect(x축 좌표, y축 좌표, x축의 크기, y축의 크기)
+    context1.fillRect(50, 50, 100, 100);
+
+    //.fillStyle = 색상 변경
+    context1.fillStyle = 'red';
+    context1.fillRect(0, 0, 100, 100);
+
+    //.clearRect = 지우기
+    context1.clearRect(80, 80, 50, 50);
+
+    //.strokeRect = 선그리기
+    context1.strokeRect(150, 150, 100, 100);
+
+    //path 그리기
+    const canvas2 = document.querySelector(".canvas2");
+    const ctx2 = canvas2.getContext("2d");
+
+    ctx2.beginPath(); //새로운 path생성
+    ctx2.moveTo(100, 100);  //moveTo(x, y) : x, y축 위치를 시작점으로 설정
+    ctx2.lineTo(300, 200);  //lineTo(x, ,y) : x, y축 위치까지 path를 그려줍니다.
+
+    ctx2.stroke();  //선
+    ctx2.closePath(); //path 종료
+
+    //원 그리기 .arc(x, y, radius, trartAngle, endAngle(radian값), anticlockwise(시계/반시계방향 설정) ) -> 각도는 radian(호도)로 단위를 입력
+    
+    //각도를 radian 값으로 변경해주는 함수
+    function radian(angle){
+      return angle * Math.PI / 180  //radian값으로 변경해주는 공식
+    }
+
+    ctx2.beginPath(); //새로 그릴때마다 beginPath를 꼭 넣어주어야 합니다. -> 넣지 않으면 그전에 했던 것과 이어져서 나옴
+    ctx2.arc(500, 100, 20 , 0, radian(360), false);
+    ctx2.stroke();
+    ctx2.closePath();
+
+    ctx2.beginPath(); //새로 그릴때마다 beginPath를 꼭 넣어주어야 합니다.
+    ctx2.arc(300, 300, 50, 0, radian(360), false);
+    ctx2.fill();  //색 채움
+    ctx2.closePath(); //path 종료
+
+</script>
+</body>
+</html>

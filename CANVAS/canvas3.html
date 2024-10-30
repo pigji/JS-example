@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>requestAnimationFrame</title>
+</head>
+<body>
+  <canvas class="canvas" width="600" height="400" style="background: #eee">
+    이 브라우저는 캔버스를 지원하지 않습니다.
+  </canvas>
+
+  <script>
+    const canvas = document.querySelector(".canvas");
+    const ctx = canvas.getContext('2d');
+
+    let xPos = 10;  //x위치 값을 담을 변수(초기 값을 10으로 담아줌)
+    let count = 0;
+    let timerId;  //timerId변수 생성(애니메이션을 종료하기 위해 필요)
+
+    function draw(){
+      count++;  //count를 1씩 증가
+      if(count % 30 === 0){ //count의 값이 30의 배수이면 실행(count를 30으로 나눴을때 나머지가 0이면)
+        //함수로 호출될때 마다 clearRect로 캔버스 안의 도형을 지워줍니다.
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.arc(xPos, 150, 5, 0, Math.PI*2, false); //Math.PI*2 : 원을 그리는 공식
+        ctx.fill();
+        //xPos값을 10씩 추가
+        xPos += 10;
+      }
+
+
+      //프레임 유실이 업속, 최적화된 애니메이션 효과를 만들어준다. 기본적으로 콜백의 수는 1초에 60최지만 브라우저 성능에 따라 달라질 수 있다.
+        //함수 반복호출(기본적으로 1초에 60프레임씩 동작)
+      timerId = requestAnimationFrame(draw);
+      if(xPos >= canvas.width - 10){
+        cancelAnimationFrame(timerId) //xPos값이 canvas의 넓이 -10(동그라미 크기)보다 크거나 같아지면 애니메이션을 종료(반복함수 종료)
+      }
+    }
+    draw(); //draw함수 호출
+
+    //캔버스 요소에 클릭 시 애니메이션 종료
+    canvas.addEventListener('click', () => {
+      cancelAnimationFrame(timerId)
+    })
+  </script>
+
+</body>
+</html>
