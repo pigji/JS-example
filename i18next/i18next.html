@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>i18next</title>
+
+  <!--i18next CDN-->
+  <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <!--한국어와 영어를 선택할 수 있는 select창-->
+  <select id="language_select" onchange="i18next.changeLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="ko">Korean</option>
+  </select>
+
+  <!--웹페이지 텍스트(제목, 내용)-->
+  <h1 id="title"></h1>
+  <p id="content"></p>
+
+  <script>
+    //현재의 웹 브라우저에 설정된 언어 확인(만약 한국어라면 true, 아니면 false)
+    const isKorean = navigator.language === "ko-KR" || "ko";
+console.log(navigator.language)
+    //웹 브라우저 언어가 한국어면 select에 한국어 선택, 아닐경우 영어 선택
+    if(isKorean){
+      document.getElementById("language_select").options[1].setAttribute("selected", true);
+    }
+    else{
+      document.getElementById("language_select").options[0].setAttribute("selected", true);
+    }
+
+    //웹 페이지 텍스트 변환을 위한 세팅
+    i18next.init(
+      {
+        lng: isKorean ? "ko" : "en",  //한국어인지, 영어인지 표시
+        debug: true,
+        resources: {  //웹 페이지를 구성하는 텍스트들을 json형태로 입력
+          ko: {
+            translation: {
+              title: "한국어 제목",
+              content: "한국어 내용"
+            }
+          },
+          en: {
+            translation: {
+              title: "English title",
+              content: "English content"
+            }
+          }
+        }
+      },
+      function(err, t){
+        if(err){
+          console.error(err); //에러가 발생되면 콘솔에 에러 메시지를 출력
+        }
+        else{ //에러가 없을 경우 설정한 언어로 json안에 텍스트들을 대입
+          updateContent();
+        }
+      }
+    )
+
+    //i18next.init에서 세팅한 텍스트들을 html 태그에 대입
+    function updateContent(){
+      document.getElementById("title").innerHTML = i18next.t("title")
+      document.getElementById("content").innerHTML = i18next.t("content")
+    }
+
+    //언어 변환 시 위의 select에서 onchange 이벤트가 발생하면 i18next의 languageChanged 이벤트가 발생됨
+    i18next.on("languageChanged", () => {
+      updateContent();  //바뀐 언어에 따라 웹 페이지 텍스트를 재대입
+    })
+    
+
+  </script>
+</body>
+</html>
