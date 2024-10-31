@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스 연습문제</title>
+</head>
+<body>
+  <script>
+    //문제1. 간단한 Book 클래스
+    /*
+      책을 나타내는 Book  클래스를 작성하세요. 
+      이 클래스는 title (제목)과 author (저자) 속성을 가지며, 다음 기능을 포함해야 합니다.
+      
+      생성자: title 과 author 를 받아서 초기화합니다.
+      메서드: getDetails()  메서드를 작성하여 책의 제목과 저자를 문자열로 반환합니다
+    */
+    class Book{
+      //생성자
+      constructor(title, author){
+        //멤버변수
+        this.title = title;
+        this.author = author;
+      }
+      getDetails(){
+        return `${this.title} 저자: ${this.author}`;
+      }
+    }
+
+    const book = new Book("해리포터와 마법사의 돌", "J.K. 롤링");
+    console.log(book.getDetails()); // "해리포터와 마법사의 돌 저자: J.K. 롤링"
+
+
+    /*------------------------------------------------------*/
+    //문제2. Person클래스와 Employee클래스
+    /*
+      Person  클래스 :
+        고급 주제13속성: name (이름), age (나이)
+        메서드: getIntroduction()  - 사람의 이름과 나이를 문자열로 반환합니다.
+      
+        Employee  클래스 :
+        상속: Person  클래스에서 상속 받습니다.
+        추가 속성: position (직위)
+        메서드: getDetails()  - 직위와 사람의 소개를 문자열로 반환합니다.
+    */
+    
+    class Person{
+      constructor(name, age){
+        this.name = name;
+        this.age = age;
+      }
+      getIntroduction(){
+        return `저의 이름은 ${this.name}입니다, 나이는 ${this.age}살 입니다.`
+      }
+    }
+
+    class Employee extends Person{
+      constructor(name, age, job){
+        super(name, age);
+        this.job = job;
+      }
+      getDetails(){
+        return `직업은 ${this.job}이고, 제 이름은 ${this.getIntroduction()}`
+      }
+    }
+
+    const employee = new Employee("홍길동", 30, "웹 개발자");
+    console.log(employee.getIntroduction()); // "저의 이름은 홍길동 입니다, 나이는 30살 입니다"
+    console.log(employee.getDetails()); // "직업은 웹 개발자이고 제 이름은 홍길동 입니다, 나이는 30살 입니다"
+  </script>
+</body>
+</html>
